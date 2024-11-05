@@ -1,6 +1,7 @@
 <template>
   <main>
     <h1>{{ t('home.hello') }}</h1>
+    <h2>PR 自动化测试</h2>
   </main>
 </template>
 

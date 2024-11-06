@@ -1,0 +1,37 @@
+:root {
+  /* Light mode variables */
+  --website-decoration-line: #f6f6f6;
+  --website-font-active: #2ca7f8;
+  --website-font-primary: #121212;
+  --website-font-secondary: #808080;
+  --website-font-third: #bebebe;
+  --website-image-border: rgba(0, 0, 0, 0.12);
+  --website-layer-background: #f7f7f9;
+  --website-layer-card-background: #ffffff;
+  --website-layer-card-border: #e4e4e4;
+  --website-layer-footer: #ffffff;
+  --website-tag-active-background: #eef9ff;
+  --website-tag-active-border: #40b3f5;
+  --website-tag-background: #fbfbfb;
+  --website-tag-border: #e4e4e4;
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --website-decoration-line: #4f4f4f;
+    --website-font-active: #4bb6fc;
+    --website-font-primary: #efefef;
+    --website-font-secondary: #c5c5c5;
+    --website-font-third: #8e8e8e;
+    --website-image-border: rgba(0, 0, 0, 0.12);
+    --website-layer-background: #212121;
+    --website-layer-card-background: #2c2c2c;
+    --website-layer-card-border: #404040;
+    --website-layer-footer: #3a3a3a;
+    --website-tag-active-background: #133141;
+    --website-tag-active-border: #2776a4;
+    --website-tag-background: #282828;
+    --website-tag-border: #1f1f1f;
+  }
+}

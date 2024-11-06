@@ -22,3 +22,12 @@ const imageList = [
 ]
 const { t } = useI18n()
 </script>
+
+<style lang="scss" scoped>
+main {
+  margin-top: 64px;
+  h1 {
+    color: var(--website-font-primary);
+  }
+}
+</style>

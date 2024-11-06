@@ -15,5 +15,10 @@ export default [
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
-  skipFormatting
+  skipFormatting,
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off'
+    }
+  }
 ]

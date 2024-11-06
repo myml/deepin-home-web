@@ -2,4 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:
+    Noto Sans SC,
+    sans-serif;
+}
+
+a {
+  color: var(--website-font-primary);
+  text-decoration: none;
+}
+
+ul {
+  color: var(--website-font-primary);
+  list-style: none;
+}
+
+body {
+  background-color: var(--website-layer-background);
 }

@@ -21,30 +21,26 @@
 <script setup>
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
+/**
+ * 轮播图组件
+ * @props:
+ *  - valueList: 数据列表 必填 最少3个
+ *  - interval: 轮播间隔时间 默认5000ms
+ *  - height: 轮播高度 默认400px
+ */
 const props = defineProps({
-  /**
-   * 数据列表
-   */
   valueList: {
     type: Array,
     required: true,
     default: () => []
   },
-  /**
-   * 轮播间隔时间
-   * 默认5000ms
-   */
   interval: {
     type: Number,
     default: 5000
   },
-  /**
-   * 轮播高度
-   * 默认400px
-   */
   height: {
     type: String,
-    default: '400px'
+    default: '500px'
   }
 })
 const screenWidth = ref(window.innerWidth)

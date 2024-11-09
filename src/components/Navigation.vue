@@ -47,7 +47,7 @@ onMounted(() => {
   height: 64px;
   padding: 0 250px;
   z-index: 9999;
-
+  background-color: var(--website-layer-background);
   .nav-wrap {
     width: 100%;
     height: 100%;

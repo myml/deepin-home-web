@@ -3,12 +3,9 @@
     <NCarousel :value-list="imageList" height="500px" class="my-5">
       <template #default="val">
         <div class="w-full h-full overflow-hidden rounded-2xl">
-          <div
-            :style="{
-              background: `url(${val.value}) lightgray 50% / cover no-repeat`
-            }"
-            class="object-fill w-full h-full"
-          >
+          <div :style="{
+            background: `url(${val.value}) lightgray 50% / cover no-repeat`
+          }" class="object-fill w-full h-full">
             <span class="text-3xl text-red-700">666666666666666666</span>
           </div>
         </div>
@@ -20,12 +17,8 @@
         <span v-html="highlightDeepin(t('tips.reason'))" />
       </div>
       <div class="grid grid-cols-3 gap-3 mt-5">
-        <div
-          v-for="(item, index) in reasonList"
-          :key="index"
-          class="bg-white rounded-xl p-5"
-          :class="{ 'col-span-2': index === reasonList.length - 1 }"
-        >
+        <div v-for="(item, index) in reasonList" :key="index" class="bg-white rounded-xl p-5"
+          :class="{ 'col-span-2': index === reasonList.length - 1 }">
           <div class="w-full flex-auto">
             <span class="text-2xl font-semibold">{{ item.title }}</span>
             <p class="text-[--website-font-secondary]">{{ item.content }}</p>
@@ -39,15 +32,8 @@
       <div class="text-3xl font-semibold">
         <span v-html="highlightDeepin(t('tips.community'))" />
       </div>
-      <div
-        v-for="(item, index) in community"
-        :key="index"
-        class="bg-white rounded-xl my-5 flex overflow-hidden"
-      >
-        <div
-          :style="{ background: `url(${item.image})  no-repeat` }"
-          class="w-1/4 h-32"
-        >
+      <div v-for="(item, index) in community" :key="index" class="bg-white rounded-xl my-5 flex overflow-hidden">
+        <div :style="{ background: `url(${item.image})  no-repeat` }" class="w-1/4 h-32">
           <span style="text-align: center">测试</span>
         </div>
         <div class="w-full flex-col flex p-2.5">
@@ -62,27 +48,18 @@
       </div>
       <div class="flex items-center justify-center">
         <el-button color="#FFF" class="text-gray-300" round>
-          <span class="text-[--website-font-secondary]" @click="pushClick"
-            >查看更多 +</span
-          >
+          <span class="text-[--website-font-secondary]" @click="pushClick">查看更多 +</span>
         </el-button>
       </div>
     </div>
     <!-- 开源社区 -->
     <div class="mx-64 my-5 text-[--website-font-primary]">
       <div class="flex justify-between items-center">
-        <span
-          class="text-3xl font-semibold"
-          v-html="t('tips.openSource')"
-        ></span>
+        <span class="text-3xl font-semibold" v-html="t('tips.openSource')"></span>
         <div
-          class="flex justify-center items-center bg-[--website-layer-card-background] rounded-full py-3 px-[22px] border border-[--website-layer-card-border] border-solid cursor-pointer"
-        >
-          <span class="text-[--website-font-secondary] font-semibold"
-            >github.com/<span class="text-[--website-font-primary]"
-              >linuxdeepin</span
-            ></span
-          >
+          class="flex justify-center items-center bg-[--website-layer-card-background] rounded-full py-3 px-[22px] border border-[--website-layer-card-border] border-solid cursor-pointer">
+          <span class="text-[--website-font-secondary] font-semibold">github.com/<span
+              class="text-[--website-font-primary]">linuxdeepin</span></span>
           <img class="w-6 h-6" :src="ArrowDownRight" alt="" />
         </div>
       </div>
@@ -90,34 +67,26 @@
         <!-- 贡献看板和参与社区 -->
         <div class="row-span-2 flex flex-col gap-5 text-2xl font-semibold">
           <div
-            class="flex justify-center items-center gap-4 h-[108px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer"
-          >
+            class="flex justify-center items-center gap-4 h-[108px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer">
             <img class="w-[28px] h-[28px]" :src="BrowserCode" alt="" />
             <span>贡献看板</span>
           </div>
           <div
-            class="flex justify-center items-center gap-4 h-[108px] mt-[5px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer"
-          >
+            class="flex justify-center items-center gap-4 h-[108px] mt-[5px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer">
             <img class="w-[28px] h-[28px]" :src="JoinCommunity" alt="" />
             <span>贡献看板</span>
           </div>
         </div>
         <div
-          class="col-span-2 row-span-2 grid grid-cols-3 grid-rows-2 gap-0 rounded-[18px] overflow-hidden border border-[--website-layer-card-border] border-solid cursor-pointer"
-        >
-          <div
-            v-for="(item, index) in openSource"
-            :key="index"
+          class="col-span-2 row-span-2 grid grid-cols-3 grid-rows-2 gap-0 rounded-[18px] overflow-hidden border border-[--website-layer-card-border] border-solid cursor-pointer">
+          <div v-for="(item, index) in openSource" :key="index"
             class="flex flex-col items-center justify-center bg-[--website-layer-card-background]"
-            :class="{ 'bg-[--website-tag-background]': index % 2 === 1 }"
-          >
+            :class="{ 'bg-[--website-tag-background]': index % 2 === 1 }">
             <div class="flex items-center font-semibold text-[18px]">
               <img class="w-6 h-6" :src="item.icon" alt="" />
               <span class="ml-1" v-html="formatNumber(item.count)"></span>
             </div>
-            <div
-              class="text-[--website-font-secondary] text-xs font-semibold mt-1"
-            >
+            <div class="text-[--website-font-secondary] text-xs font-semibold mt-1">
               {{ item.desc }}
             </div>
           </div>
@@ -127,7 +96,7 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import NCarousel from '@/components/nCarousel.vue'
 import { ref } from 'vue'

@@ -3,7 +3,7 @@
  * @param text
  * @returns {*}
  */
-export function highlightDeepin(text) {
+export function highlightDeepin(text: string) {
   return text.replace(
     /deepin/gi,
     '<span class="text-[--website-font-active]">$&</span>'
@@ -15,6 +15,6 @@ export function highlightDeepin(text) {
  * @param {number} num
  * @returns {string}
  */
-export function formatNumber(num) {
+export function formatNumber(num: number) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }

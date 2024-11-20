@@ -1,6 +1,6 @@
 import { Axios } from 'axios'
 
-const request = Axios.create({
+const request = new Axios({
   baseURL: 'https://www.deepin.org',
   timeout: 5000
 })

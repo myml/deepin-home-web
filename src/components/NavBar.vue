@@ -2,19 +2,15 @@
   <nav class="nav">
     <div class="nav-wrap">
       <div class="logo">
-        <a
-          href="https://www.deepin.org"
-          @mouseenter="logoHover = true"
-          @mouseleave="logoHover = false"
-          ><img :src="logoSrc"
-        /></a>
+        <a href="https://www.deepin.org" @mouseenter="logoHover = true" @mouseleave="logoHover = false"><img
+            :src="logoSrc" /></a>
       </div>
       <NavMenu :is-dark-mode="isDarkMode" />
     </div>
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import NavMenu from './NavMenu.vue'
 import { ref } from 'vue'
 import DeepinMono from '@/assets/icons/deepin-mono.svg'
@@ -48,6 +44,7 @@ onMounted(() => {
   padding: 0 250px;
   z-index: 9999;
   background-color: var(--website-layer-background);
+
   .nav-wrap {
     width: 100%;
     height: 100%;
@@ -55,7 +52,7 @@ onMounted(() => {
     justify-content: space-between;
 
     .logo,
-    .menu > li {
+    .menu>li {
       display: flex;
       align-items: center;
       color: var(--website-font-primary);
@@ -87,7 +84,7 @@ onMounted(() => {
         user-select: none;
       }
 
-      > a {
+      >a {
         color: inherit;
         text-decoration: none;
       }

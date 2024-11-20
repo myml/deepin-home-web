@@ -1,24 +1,13 @@
 <template>
-  <el-carousel
-    indicator-position="none"
-    arrow="never"
-    :interval="interval"
-    :height="height"
-    type="card"
-    :card-scale="1"
-    @change="change"
-  >
-    <el-carousel-item
-      v-for="(item, index) in valueList"
-      :key="index"
-      :class="`class${index}`"
-    >
+  <el-carousel indicator-position="none" arrow="never" :interval="interval" :height="height" type="card" :card-scale="1"
+    @change="change">
+    <el-carousel-item v-for="(item, index) in valueList" :key="index" :class="`class${index}`">
       <slot :value="item" :index="index"></slot>
     </el-carousel-item>
   </el-carousel>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
 /**
@@ -64,7 +53,7 @@ const prevs = ref(props.valueList.length - 1)
 // 当前元素右边 下标
 const nexts = ref(1)
 
-function change(current) {
+function change(current: number) {
   const l = props.valueList.length - 1
   if (current === 0) {
     prevs.value = l
@@ -78,8 +67,8 @@ function change(current) {
 
 function adjustCarouselItems() {
   nextTick(() => {
-    const lefts = document.getElementsByClassName(`class${prevs.value}`)[0]
-    const rights = document.getElementsByClassName(`class${nexts.value}`)[0]
+    const lefts = document.getElementsByClassName(`class${prevs.value}`)[0] as HTMLDivElement
+    const rights = document.getElementsByClassName(`class${nexts.value}`)[0] as HTMLDivElement
     if (lefts) {
       lefts.style.transform = `translateX(-${55}%)`
     }

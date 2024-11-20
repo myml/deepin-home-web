@@ -1,7 +1,7 @@
 import { Axios } from 'axios'
 
 const request = new Axios({
-  baseURL: 'https://www.deepin.org',
+  baseURL: '/',
   timeout: 5000
 })
 
@@ -18,7 +18,9 @@ request.interceptors.request.use(
 // 响应拦截器
 request.interceptors.response.use(
   response => {
-    return response.data
+    // TODO axios和mock结合会出现没有自动解析json的问题，需要排查排查
+    response.data = JSON.parse(response.data)
+    return response
   },
   error => {
     return Promise.reject(error)

@@ -16,5 +16,6 @@ export function highlightDeepin(text: string) {
  * @returns {string}
  */
 export function formatNumber(num: number) {
+  console.log('formatNumber', num)
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }

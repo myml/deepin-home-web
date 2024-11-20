@@ -1,6 +1,6 @@
 <template>
-  <main class="mt-16">
-    <NCarousel :value-list="imageList" height="500px" class="my-5">
+  <main class="mt-16" v-if="home.config">
+    <NCarousel :value-list="home.config.imageList" height="500px" class="my-5">
       <template #default="val">
         <div class="w-full h-full overflow-hidden rounded-2xl">
           <div :style="{
@@ -17,8 +17,8 @@
         <span v-html="highlightDeepin(t('tips.reason'))" />
       </div>
       <div class="grid grid-cols-3 gap-3 mt-5">
-        <div v-for="(item, index) in reasonList" :key="index" class="bg-white rounded-xl p-5"
-          :class="{ 'col-span-2': index === reasonList.length - 1 }">
+        <div v-for="(item, index) in home.config.reasonList" :key="index" class="bg-white rounded-xl p-5"
+          :class="{ 'col-span-2': index === home.config.reasonList.length - 1 }">
           <div class="w-full flex-auto">
             <span class="text-2xl font-semibold">{{ item.title }}</span>
             <p class="text-[--website-font-secondary]">{{ item.content }}</p>
@@ -32,7 +32,7 @@
       <div class="text-3xl font-semibold">
         <span v-html="highlightDeepin(t('tips.community'))" />
       </div>
-      <div v-for="(item, index) in community" :key="index" class="bg-white rounded-xl my-5 flex overflow-hidden">
+      <div v-for="(item, index) in news" :key="index" class="bg-white rounded-xl my-5 flex overflow-hidden">
         <div :style="{ background: `url(${item.image})  no-repeat` }" class="w-1/4 h-32">
           <span style="text-align: center">测试</span>
         </div>
@@ -97,9 +97,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NCarousel from '@/components/nCarousel.vue'
-import { ref } from 'vue'
 import ArrowDownRight from '@/assets/icons/arrow-down-right-sm.svg'
 import BrowserCode from '@/assets/icons/browser-code.svg'
 import JoinCommunity from '@/assets/icons/join-community.svg'
@@ -110,246 +110,55 @@ import PackagePlus from '@/assets/icons/package-plus.svg'
 import UserProfile from '@/assets/icons/user-profile.svg'
 import UsersProfiles from '@/assets/icons/users-profiles.svg'
 import { highlightDeepin, formatNumber } from '@/utils/format'
+import { useLangStore } from '@/stores/home'
 
 const { t } = useI18n()
-const imageList = [
-  'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-  'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-  'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg'
-]
-const reasonList = [
-  {
-    title: '开箱即用',
-    content:
-      '安装简单，无需对系统进行额外配置和软件安装，即可满足日常办公的需要。'
-  },
-  {
-    title: '尊重隐私',
-    content:
-      '用户隐私是我们一直所关注的事情，我们尊重您的个人数据和隐私安全。您拥有deepin的所有控制权，可以用它做任何您想做的事情。'
-  },
-  {
-    title: '社区强大',
-    content:
-      '我们和用户有着紧密的联系，您可以通过微信、论坛、GitHub、Telegram、Twitter 向我们反馈问题。'
-  },
-  {
-    title: '开箱即用',
-    content:
-      '我们不仅自研一系列基础办公软件，而且兼容大部分安卓和Windows软件，有40000+款软件供您选择。'
-  },
-  {
-    title: '代码开源',
-    content:
-      '我们遵循开源软件许可证协议发布源代码，相关项目和源代码均可在 GitHub 上进行查看。'
-  }
-]
-const communitys = [
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  }
-]
-const community = ref([
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  },
-  {
-    image:
-      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
-    content:
-      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
-    time: '2024-10-16 12:12:12'
-  }
-])
+const { home, getHome, news, loadNews } = useLangStore()
+
+getHome("zh_CN")
+loadNews()
+
 function pushClick() {
-  community.value = [...community.value, ...communitys]
+  loadNews()
 }
 
-const openSource = ref([
-  {
-    icon: GitBranch,
-    count: 24306,
-    desc: 'Pull Requests'
-  },
-  {
-    icon: PackagePlus,
-    count: 109596,
-    desc: 'Commits'
-  },
-  {
-    icon: UserProfile,
-    count: 2052,
-    desc: 'Contributors'
-  },
-  {
-    icon: Package,
-    count: 8964,
-    desc: 'Repositories'
-  },
-  {
-    icon: AnnoTationTyping,
-    count: 11664,
-    desc: 'Issues'
-  },
-  {
-    icon: UsersProfiles,
-    count: 61,
-    desc: 'Teams'
+const openSource = computed(() => {
+  if (!home.opensource) {
+    return []
   }
-])
+  console.log(home.opensource.commits)
+  return [
+    {
+      icon: GitBranch,
+      count: home.opensource.pull_request,
+      desc: 'Pull Requests'
+    },
+    {
+      icon: PackagePlus,
+      count: home.opensource.commits,
+      desc: 'Commits'
+    },
+    {
+      icon: UserProfile,
+      count: home.opensource.contributors,
+      desc: 'Contributors'
+    },
+    {
+      icon: Package,
+      count: home.opensource.repositories,
+      desc: 'Repositories'
+    },
+    {
+      icon: AnnoTationTyping,
+      count: home.opensource.issues,
+      desc: 'Issues'
+    },
+    {
+      icon: UsersProfiles,
+      count: home.opensource.teams,
+      desc: 'Teams'
+    }
+  ]
+})
+
 </script>

@@ -10,6 +10,8 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    HomeApps: typeof import('./src/components/homeApps.vue')['default']
+    HomeOffice: typeof import('./src/components/homeOffice.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     NavMenu: typeof import('./src/components/NavMenu.vue')['default']
     NavMenuItem: typeof import('./src/components/NavMenuItem.vue')['default']

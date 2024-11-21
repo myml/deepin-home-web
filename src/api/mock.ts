@@ -1,0 +1,274 @@
+import { API } from './api'
+import type { HomeConfig, News } from './model'
+
+export class mockAPI implements API {
+  async getHomeConfig(lang: string) {
+    await this.delay()
+    const data = localStorage.getItem('home_config_' + lang)
+    if (data) {
+      return JSON.parse(data)
+    }
+    return homeConfigMockData
+  }
+  async setHomeConfig(lang: string, config: HomeConfig) {
+    await this.delay()
+    localStorage.setItem('home_config_' + lang, JSON.stringify(config))
+  }
+  async loadNews(): Promise<News[]> {
+    await this.delay()
+    return newsMockData
+  }
+  async getOpenSource() {
+    await this.delay()
+    return {
+      pull_request: 110941,
+      commits: 2060,
+      contributors: 11686,
+      repositories: 24830,
+      issues: 9061,
+      teams: 61
+    }
+  }
+  async delay() {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+  }
+}
+
+const homeConfigMockData = {
+  imageList: [
+    'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+    'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+    'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg'
+  ],
+  reasonList: [
+    {
+      title: '开箱即用',
+      content:
+        '安装简单，无需对系统进行额外配置和软件安装，即可满足日常办公的需要。'
+    },
+    {
+      title: '尊重隐私',
+      content:
+        '用户隐私是我们一直所关注的事情，我们尊重您的个人数据和隐私安全。您拥有deepin的所有控制权，可以用它做任何您想做的事情。'
+    },
+    {
+      title: '社区强大',
+      content:
+        '我们和用户有着紧密的联系，您可以通过微信、论坛、GitHub、Telegram、Twitter 向我们反馈问题。'
+    },
+    {
+      title: '开箱即用',
+      content:
+        '我们不仅自研一系列基础办公软件，而且兼容大部分安卓和Windows软件，有40000+款软件供您选择。'
+    },
+    {
+      title: '代码开源',
+      content:
+        '我们遵循开源软件许可证协议发布源代码，相关项目和源代码均可在 GitHub 上进行查看。'
+    }
+  ],
+  office: {
+    title: '特色功能实用更高效',
+    content:
+      'deepin根据用户使用习惯自研开发40余款应用，为用户提供了更高效、便捷的办公能力！',
+    cards: [
+      {
+        title: '自由定义办公方式',
+        content:
+          '独一无二的桌面环境，多样化的办公方式，deepin为您带去新颖独特的使用感受，满足您个性化的使用需求！',
+        image: 'https://www.deepin.org/index/assets/imgs/自定义办公.png',
+        cover: 'https://www.deepin.org/index/assets/imgs/bilibili/p1.jpg',
+        url: 'https://www.bilibili.com/video/BV1Sz4y1m7Ks'
+      },
+      {
+        title: '全局搜索',
+        content:
+          '遗忘在角落的照片、视频、文件，贴心功能想您所想，搜您所需，一键直达。',
+        image: 'https://www.deepin.org/index/assets/imgs/全局搜索.png',
+        cover: 'https://www.deepin.org/index/assets/imgs/bilibili/p2.jpg',
+        url: 'https://www.bilibili.com/video/BV1Tf4y177NX'
+      },
+      {
+        title: '截图录屏',
+        content:
+          '有价值的图文资料，急待分享的趣味画面，截图录屏助您无任何负担的随时捕捉。',
+        image: 'https://www.deepin.org/index/assets/imgs/截图录屏.png',
+        cover: 'https://www.deepin.org/index/assets/imgs/bilibili/p3.jpg',
+        url: 'https://www.bilibili.com/video/BV1pi4y1A7AQ'
+      },
+      {
+        title: 'OCR',
+        content:
+          '想要复制图片上的中英文？一键精准识别，一秒高效提取，提升效率竟然如此简单。',
+        image: 'https://www.deepin.org/index/assets/imgs/ocr.png',
+        cover: 'https://www.deepin.org/index/assets/imgs/bilibili/p4.jpg',
+        url: 'https://www.bilibili.com/video/BV1Rh411i79d'
+      }
+    ]
+  },
+  apps: {
+    title: '生产力让生活更美好',
+    content: 'deepin应用商店囊括近40000款应用，满足您的生活和工作所有需求。',
+    cards: [
+      {
+        list: [
+          {
+            title: 'QQ',
+            image: 'https://www.deepin.org/index/assets/icons/office/qq.png'
+          },
+          {
+            title: '微信',
+            image: 'https://www.deepin.org/index/assets/icons/office/wx.png'
+          },
+          {
+            title: '钉钉',
+            image: 'https://www.deepin.org/index/assets/icons/office/dd.png'
+          },
+          {
+            title: '企业微信',
+            image: 'https://www.deepin.org/index/assets/icons/office/qw.png'
+          },
+          {
+            title: 'WPS',
+            image: 'https://www.deepin.org/index/assets/icons/office/wps.png'
+          },
+          {
+            title: '腾讯会议',
+            image: 'https://www.deepin.org/index/assets/icons/office/hy.png'
+          }
+        ],
+        title: '日常办公',
+        content:
+          '快速解决办公问题，有效提升工作效率，让进步发生在生活中的每时每刻。'
+      },
+      {
+        list: [
+          {
+            title: '腾讯视频',
+            image: 'https://www.deepin.org/index/assets/icons/video/tx.png'
+          },
+          {
+            title: '爱奇艺',
+            image: 'https://www.deepin.org/index/assets/icons/video/qiy.png'
+          },
+          {
+            title: 'QQ音乐',
+            image: 'https://www.deepin.org/index/assets/icons/video/qq.png'
+          },
+          {
+            title: '网易云音乐',
+            image: 'https://www.deepin.org/index/assets/icons/video/wyy.png'
+          },
+          {
+            title: '抖音',
+            image: 'https://www.deepin.org/index/assets/icons/video/dy.png'
+          },
+          {
+            title: 'Steam',
+            image: 'https://www.deepin.org/index/assets/icons/video/steam.png'
+          }
+        ],
+        title: '影音娱乐',
+        content:
+          '在有限的生命中，更多的时候都是平凡无奇，音乐、影视赋予我们无限的可能和想象，让平淡无奇的生活多了些闪光。'
+      },
+      {
+        list: [
+          {
+            title: 'GIMP',
+            image: 'https://www.deepin.org/index/assets/icons/design/gimp.png'
+          },
+          {
+            title: 'Pixso',
+            image: 'https://www.deepin.org/index/assets/icons/design/pixso.png'
+          },
+          {
+            title: 'Krita',
+            image: 'https://www.deepin.org/index/assets/icons/design/krita.png'
+          },
+          {
+            title: 'OpenShot',
+            image:
+              'https://www.deepin.org/index/assets/icons/design/openshot.png'
+          },
+          {
+            title: 'Blender',
+            image:
+              'https://www.deepin.org/index/assets/icons/design/blender.png'
+          },
+          {
+            title: '美图秀秀',
+            image: 'https://www.deepin.org/index/assets/icons/design/meitu.png'
+          }
+        ],
+        title: '设计与制造',
+        content:
+          '从0到1，从草图到最终呈现出您想表达的完美构想，让不可能成为可能，是你们让的世界变得更加美好。'
+      },
+      {
+        list: [
+          {
+            title: 'Visual Studio Code',
+            image:
+              'https://www.deepin.org/index/assets/icons/development/vscode.png'
+          },
+          {
+            title: 'IntelliJ IDEA Ultimate',
+            image:
+              'https://www.deepin.org/index/assets/icons/development/intelliJ.png'
+          },
+          {
+            title: 'Postman',
+            image:
+              'https://www.deepin.org/index/assets/icons/development/postman.png'
+          },
+          {
+            title: 'Android Studio',
+            image:
+              'https://www.deepin.org/index/assets/icons/development/android.png'
+          },
+          {
+            title: 'DTK IDE',
+            image:
+              'https://www.deepin.org/index/assets/icons/development/dtk.png'
+          },
+          {
+            title: 'QtCreator',
+            image:
+              'https://www.deepin.org/index/assets/icons/development/qtcreator.png'
+          }
+        ],
+        title: '软件开发',
+        content:
+          '软件开发是本世纪以来推进人类进步的核心力量，也是Linux长久发展的源动力，更多的开发者用户是我们构建完美发行版的最大动力。'
+      }
+    ]
+  }
+}
+
+const newsMockData: News[] = [
+  {
+    image:
+      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
+    content:
+      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
+    time: '2024-10-16 12:12:12'
+  },
+  {
+    image:
+      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
+    content:
+      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
+    time: '2024-10-16 12:12:12'
+  },
+  {
+    image:
+      'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+    title: 'deepin 社区惊艳亮相2024 OSCAR开源产业大会，社区王耀华获奖',
+    content:
+      '10月16日，由中国通信标准化协会主办，中国信息通信研究院承办的的“2024 OSCAR开源产业大会”在北京隆重开幕。本次大会旨在搭建专业平台，广纳产研智慧，扎实开源体系构建，繁荣开源生态建设，推动开源产业发展。',
+    time: '2024-10-16 12:12:12'
+  }
+]

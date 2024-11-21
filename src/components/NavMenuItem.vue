@@ -49,7 +49,7 @@
 import { ref, watch } from 'vue'
 import ChevronRight from '@/assets/icons/chevron-right.svg'
 import { useLangStore } from '@/stores/lang'
-import type { Menu } from './menu'
+import type { Menu } from './menu';
 
 const { menu } = defineProps<{
   menu?: Menu,

@@ -82,6 +82,7 @@
     <div class="max-w-5xl mx-auto my-5 text-[--website-font-primary]">
       <homeOpenSource />
     </div>
+    <Footer :setting="home.config.footer" />
   </main>
 </template>
 
@@ -91,6 +92,7 @@ import NCarousel from '@/components/nCarousel.vue'
 import homeOffice from '@/components/homeOffice.vue'
 import homeApps from '@/components/homeApps.vue'
 import homeOpenSource from '@/components/homeOpenSource.vue'
+import Footer from '@/components/Footer.vue'
 
 import { highlightDeepin } from '@/utils/format'
 import { useLangStore } from '@/stores/home'

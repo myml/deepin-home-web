@@ -71,7 +71,6 @@ const openSource = computed(() => {
   if (!home.opensource) {
     return []
   }
-  console.log(home.opensource.commits)
   return [
     {
       icon: GitBranch,

@@ -3,6 +3,7 @@ export interface HomeConfig {
   reasonList: { title: string; content: string }[]
   office: Office
   apps: Apps
+  footer: Footer
 }
 
 export interface News {
@@ -19,6 +20,24 @@ export interface OpenSource {
   repositories: number
   issues: number
   teams: number
+}
+
+export interface Footer {
+  navs: {
+    title: string;
+    links: {
+      text: string;
+      url: string;
+    }[];
+  }[];
+  qr: {
+    title: string;
+    imgs: {
+      text: string;
+      url: string;
+      img: string;
+    }[];
+  };
 }
 
 export interface Office {

@@ -10,6 +10,8 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    ElPopover: typeof import('element-plus/es')['ElPopover']
+    Footer: typeof import('./src/components/Footer.vue')['default']
     HomeApps: typeof import('./src/components/homeApps.vue')['default']
     HomeOffice: typeof import('./src/components/homeOffice.vue')['default']
     HomeOpenSource: typeof import('./src/components/homeOpenSource.vue')['default']

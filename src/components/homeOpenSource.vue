@@ -19,13 +19,13 @@
         class="flex justify-center items-center gap-4 h-[108px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer"
       >
         <img class="w-[28px] h-[28px]" :src="BrowserCode" alt="" />
-        <span>贡献看板</span>
+        <span v-html="t('tips.contribution')"></span>
       </div>
       <div
         class="flex justify-center items-center gap-4 h-[108px] mt-[5px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer"
       >
         <img class="w-[28px] h-[28px]" :src="JoinCommunity" alt="" />
-        <span>贡献看板</span>
+        <span v-html="t('tips.joinCommunity')"></span>
       </div>
     </div>
     <div

@@ -1,10 +1,8 @@
 <template>
-  <div class="text-3xl font-semibold">
-    <span>{{ setting.title }}</span>
-  </div>
+  <div class="text-3xl font-semibold" v-html="t('tips.productivity')"></div>
   <section class="grid grid-cols-4 gap-6 mt-5">
     <div
-      class="flex flex-col bg-[--website-layer-card-background] pb-2 rounded-xl"
+      class="flex flex-col bg-[--website-layer-card-background] pb-2 rounded-xl border border-[--website-layer-card-border]"
       v-for="(card, index) in setting.cards"
       v-bind:key="index"
     >
@@ -14,7 +12,7 @@
           {{ card.title }}
         </h2>
 
-        <div class="text-sm">
+        <div class="text-sm text-[--website-font-secondary]">
           {{ card.content }}
         </div>
       </div>
@@ -44,8 +42,10 @@
 <script setup lang="ts">
 import type { Office } from '@/api/model'
 import play from '@/assets/play.svg'
+import { useI18n } from 'vue-i18n'
 
 const { setting } = defineProps<{
   setting: Office
 }>()
+const { t } = useI18n()
 </script>

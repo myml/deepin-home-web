@@ -2,10 +2,14 @@
   <nav class="nav">
     <div class="nav-wrap">
       <div class="logo">
-        <a href="https://www.deepin.org" @mouseenter="logoHover = true" @mouseleave="logoHover = false"><img
-            :src="logoSrc" /></a>
+        <a
+          href="https://www.deepin.org"
+          @mouseenter="logoHover = true"
+          @mouseleave="logoHover = false"
+          ><img :src="logoSrc"
+        /></a>
       </div>
-      <NavMenu :is-dark-mode="isDarkMode" />
+      <NavMenu />
     </div>
   </nav>
 </template>
@@ -16,22 +20,14 @@ import { ref } from 'vue'
 import DeepinMono from '@/assets/icons/deepin-mono.svg'
 import DeepinColor from '@/assets/icons/deepin-color.svg'
 import DeepinMonoDark from '@/assets/icons/deepin-mono-dark.svg'
-import { onMounted, computed } from 'vue'
+import { computed } from 'vue'
+import { usePreferredDark } from '@vueuse/core'
 
 const logoHover = ref(false)
-const isDarkMode = ref(
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-)
+const isDark = usePreferredDark()
 const logoSrc = computed(() =>
-  logoHover.value ? DeepinColor : isDarkMode.value ? DeepinMonoDark : DeepinMono
+  logoHover.value ? DeepinColor : isDark.value ? DeepinMonoDark : DeepinMono
 )
-
-onMounted(() => {
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-  mediaQuery.addEventListener('change', e => {
-    isDarkMode.value = e.matches
-  })
-})
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +48,7 @@ onMounted(() => {
     justify-content: space-between;
 
     .logo,
-    .menu>li {
+    .menu > li {
       display: flex;
       align-items: center;
       color: var(--website-font-primary);
@@ -84,7 +80,7 @@ onMounted(() => {
         user-select: none;
       }
 
-      >a {
+      > a {
         color: inherit;
         text-decoration: none;
       }

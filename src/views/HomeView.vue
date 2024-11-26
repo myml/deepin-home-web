@@ -1,5 +1,5 @@
 <template>
-  <main class="mt-16" v-if="home.config">
+  <main class="mt-16 text-[--website-font-primary]" v-if="home.config">
     <NCarousel :value-list="home.config.imageList" height="500px" class="my-5">
       <template #default="val">
         <div class="w-full h-full overflow-hidden rounded-2xl">
@@ -23,7 +23,7 @@
         <div
           v-for="(item, index) in home.config.reasonList"
           :key="index"
-          class="bg-white rounded-xl p-5"
+          class="bg-[--website-layer-card-background] rounded-xl p-5 border border-[--website-layer-card-border]"
           :class="{ 'col-span-2': index === home.config.reasonList.length - 1 }"
         >
           <div class="w-full flex-auto">
@@ -51,14 +51,12 @@
       <div
         v-for="(item, index) in news.data"
         :key="index"
-        class="bg-white rounded-xl my-5 flex overflow-hidden"
+        class="bg-[--website-layer-card-background] rounded-xl my-5 flex overflow-hidden border border-[--website-layer-card-border]"
       >
         <div
           :style="{ background: `url(${item.image})  no-repeat` }"
           class="w-1/4 h-32"
-        >
-          <span style="text-align: center">测试</span>
-        </div>
+        ></div>
         <div class="w-full flex-col flex p-2.5">
           <div class="text-base font-semibold">{{ item.title }}</div>
           <p class="text-[--website-font-secondary] mt-3.5 text-xs">
@@ -70,12 +68,17 @@
         </div>
       </div>
       <div class="flex items-center justify-center" v-if="news.loading">
-        <progress></progress> 加载中
+        <progress></progress> {{ t('tips.loading') }}
       </div>
       <div class="flex items-center justify-center">
-        <el-button @click="pushClick" color="#FFF" class="text-gray-300" round>
-          <span class="text-[--website-font-secondary]">查看更多 +</span>
-        </el-button>
+        <button
+          @click="pushClick"
+          class="w-36 h-12 rounded-[39px] bg-[--website-layer-card-background] border border-[--website-layer-card-border]"
+        >
+          <span class="text-[--website-font-secondary] text-lg"
+            >{{ t('tips.readMore') }} +</span
+          >
+        </button>
       </div>
     </div>
     <!-- 开源社区 -->

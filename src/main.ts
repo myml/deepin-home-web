@@ -1,6 +1,7 @@
 import './styles/tailwindcss.scss'
 import './styles/variables.scss'
 import './styles/base.scss'
+import 'element-plus/dist/index.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'

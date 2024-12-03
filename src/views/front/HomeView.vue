@@ -2,7 +2,7 @@
   <main class="mt-16 text-[--website-font-primary]" v-if="home.config">
     <NCarousel
       :value-list="home.config.carousel.cards"
-      :interval="home.config.carousel.interval"
+      :interval="3000"
       height="500px"
       class="my-5"
     >

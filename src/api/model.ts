@@ -1,4 +1,5 @@
 export interface HomeConfig {
+  seo: Seo
   carousel: Carousel
   reasonList: { title: string; content: string }[]
   office: Office
@@ -6,17 +7,24 @@ export interface HomeConfig {
   footer: Footer
 }
 
+export interface Seo {
+  title: string
+  lang: string
+  description: string
+  keywords: string[]
+}
+
 export interface Carousel {
-  interval: number,
   cards: CarouselCard[]
 }
 
 export interface CarouselCard {
-  title?: string
-  content?: string
+  interval: number
+  title: string
+  content: string
   image: string
-  image_link?: string
-  links?: {
+  image_link: string
+  links: {
     title: string
     url: string
   }[]

@@ -1,9 +1,25 @@
 export interface HomeConfig {
-  imageList: string[]
+  carousel: Carousel
   reasonList: { title: string; content: string }[]
   office: Office
   apps: Apps
   footer: Footer
+}
+
+export interface Carousel {
+  interval: number,
+  cards: CarouselCard[]
+}
+
+export interface CarouselCard {
+  title?: string
+  content?: string
+  image: string
+  image_link?: string
+  links?: {
+    title: string
+    url: string
+  }[]
 }
 
 export interface News {

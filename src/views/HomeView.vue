@@ -1,15 +1,22 @@
 <template>
   <main class="mt-16 text-[--website-font-primary]" v-if="home.config">
-    <NCarousel :value-list="home.config.imageList" height="500px" class="my-5">
+    <NCarousel
+      :value-list="home.config.carousel.cards"
+      :interval="home.config.carousel.interval"
+      height="500px"
+      class="my-5"
+    >
       <template #default="val">
         <div class="w-full h-full overflow-hidden rounded-2xl">
-          <div
-            :style="{
-              background: `url(${val.value}) lightgray 50% / cover no-repeat`
-            }"
-            class="object-fill w-full h-full"
-          >
-            <span class="text-3xl text-red-700">666666666666666666</span>
+          <div class="w-full h-full relative">
+            <img
+              :src="val.value.image"
+              alt="carousel"
+              class="fixed top-0 left-0 right-0 h-full object-fill rounded-2xl"
+            />
+            <span v-if="val.value.title" class="text-3xl text-red-700">{{
+              val.value.title
+            }}</span>
           </div>
         </div>
       </template>

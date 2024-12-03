@@ -35,11 +35,34 @@ export class mockAPI implements API {
 }
 
 const homeConfigMockData = {
-  imageList: [
-    'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-    'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg'
-  ],
+  carousel: {
+    interval: 3000,
+    cards: [
+      {
+        title: "deepin v23",
+        content: "深度科技发布deepin v23，全新设计，全新体验。",
+        image: "https://storage.deepin.org/thread/202309191045559300_%E5%AE%98%E7%BD%911.png",
+        links: [
+          {
+            title: "下载",
+            url: "https://www.deepin.org/zh/download"
+          },
+          {
+            title: "了解更多",
+            url: "https://www.deepin.org/zh/download"
+          }
+        ]
+      },
+      {
+        image: "https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg",
+        image_link: "https://www.deepin.org/zh/download",
+      },
+      {
+        image: "https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg",
+        image_link: "https://www.deepin.org/zh/download",
+      }
+    ]
+  },
   reasonList: [
     {
       title: '开箱即用',

@@ -39,27 +39,46 @@ const homeConfigMockData = {
     interval: 3000,
     cards: [
       {
-        title: "deepin v23",
-        content: "深度科技发布deepin v23，全新设计，全新体验。",
-        image: "https://storage.deepin.org/thread/202309191045559300_%E5%AE%98%E7%BD%911.png",
+        title: 'deepin v23',
+        content: '深度科技发布deepin v23，全新设计，全新体验。',
+        image:
+          'https://storage.deepin.org/thread/202309191045559300_%E5%AE%98%E7%BD%911.png',
+        image_link: 'https://www.deepin.org/zh/download',
+        interval: 3000,
+        online_time: '2024-12-04T02:35:03.000Z',
+        downline_time: '2024-12-05T16:00:00.000Z"',
         links: [
           {
-            title: "下载",
-            url: "https://www.deepin.org/zh/download"
+            title: '下载',
+            url: 'https://www.deepin.org/zh/download'
           },
           {
-            title: "了解更多",
-            url: "https://www.deepin.org/zh/download"
+            title: '了解更多',
+            url: 'https://www.deepin.org/zh/download'
           }
         ]
       },
       {
-        image: "https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg",
-        image_link: "https://www.deepin.org/zh/download",
+        title: '',
+        content: '',
+        image:
+          'https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg',
+        image_link: 'https://www.deepin.org/zh/download',
+        interval: 5000,
+        online_time: '2024-12-04T02:35:03.000Z',
+        downline_time: '2024-12-05T16:00:00.000Z',
+        links: []
       },
       {
-        image: "https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg",
-        image_link: "https://www.deepin.org/zh/download",
+        title: '',
+        content: '',
+        image:
+          'https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg',
+        image_link: 'https://www.deepin.org/zh/download',
+        interval: 3000,
+        online_time: '2024-12-04T02:35:03.000Z',
+        downline_time: '2024-12-05T16:00:00.000Z',
+        links: []
       }
     ]
   },

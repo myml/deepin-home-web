@@ -5,22 +5,7 @@
       :interval="3000"
       height="500px"
       class="my-5"
-    >
-      <template #default="val">
-        <div class="w-full h-full overflow-hidden rounded-2xl">
-          <div class="w-full h-full relative">
-            <img
-              :src="val.value.image"
-              alt="carousel"
-              class="fixed top-0 left-0 right-0 h-full object-fill rounded-2xl"
-            />
-            <span v-if="val.value.title" class="text-3xl text-red-700">{{
-              val.value.title
-            }}</span>
-          </div>
-        </div>
-      </template>
-    </NCarousel>
+    />
     <!-- 选择deepin的理由 -->
     <div class="max-w-5xl mx-auto my-5">
       <div class="text-3xl font-semibold">
@@ -103,7 +88,6 @@ import homeOffice from '@/components/homeOffice.vue'
 import homeApps from '@/components/homeApps.vue'
 import homeOpenSource from '@/components/homeOpenSource.vue'
 import Footer from '@/components/Footer.vue'
-
 import { highlightDeepin } from '@/utils/format'
 import { useLangStore } from '@/stores/home'
 

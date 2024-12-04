@@ -24,6 +24,8 @@ export interface CarouselCard {
   content: string
   image: string
   image_link: string
+  online_time: string
+  downline_time: string
   links: {
     title: string
     url: string

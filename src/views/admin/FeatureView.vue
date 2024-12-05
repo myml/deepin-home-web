@@ -42,6 +42,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Feature } from '@/api/model'
 import { ElMessage } from 'element-plus'
 
@@ -90,15 +91,17 @@ if (!localStorage.getItem('feature')) {
   )
 }
 
-const feature: Feature = JSON.parse(localStorage.getItem('feature') || '{}')
+const feature = ref<Feature>(
+  JSON.parse(localStorage.getItem('feature') || '{}')
+)
 
 const saveFeature = () => {
-  if (!feature.title || !feature.content) {
+  if (!feature.value.title || !feature.value.content) {
     ElMessage.error('标题和内容不能为空')
     return
   }
   if (
-    feature.cards.some(
+    feature.value.cards.some(
       card =>
         !card.title || !card.content || !card.image || !card.cover || !card.url
     )

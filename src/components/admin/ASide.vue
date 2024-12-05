@@ -28,9 +28,9 @@
         <el-icon><icon-menu /></el-icon>
         <span>特色功能</span>
       </el-menu-item>
-      <el-menu-item index="5">
+      <el-menu-item index="/admin/apps">
         <el-icon><icon-menu /></el-icon>
-        <span>软件列表</span>
+        <span>生产力工具</span>
       </el-menu-item>
       <el-menu-item index="6">
         <el-icon><icon-menu /></el-icon>

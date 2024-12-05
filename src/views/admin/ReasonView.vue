@@ -231,7 +231,7 @@ if (!localStorage.getItem('reason')) {
 }
 
 const activeName = ref('chinese')
-const reason = ref<Reason>(JSON.parse(localStorage.getItem('reason') || '[]'))
+const reason = ref<Reason>(JSON.parse(localStorage.getItem('reason') || '{}'))
 
 const handleClick = (tab: TabsPaneContext) => {
   activeName.value = tab.props.label

@@ -30,6 +30,11 @@ const router = createRouter({
               path: 'feature',
               name: "特色功能",
               component: () => import('@/views/admin/FeatureView.vue')
+            },
+            {
+              path: 'apps',
+              name: "生产力工具",
+              component: () => import('@/views/admin/AppsView.vue')
             }
           ]
         },

@@ -1,7 +1,7 @@
 export interface HomeConfig {
   seo: Seo
   carousel: Carousel
-  reasonList: { title: string; content: string }[]
+  reasonList: { title: string; content: string, repos: { title: string, link: string }[] }[]
   office: Office
   apps: Apps
   footer: Footer

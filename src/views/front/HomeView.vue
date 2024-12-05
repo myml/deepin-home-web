@@ -7,25 +7,7 @@
       class="my-5"
     />
     <!-- 选择deepin的理由 -->
-    <div class="max-w-5xl mx-auto my-5">
-      <div class="text-3xl font-semibold">
-        <span v-html="highlightDeepin(t('tips.reason'))" />
-      </div>
-      <div class="grid grid-cols-3 gap-3 mt-5">
-        <div
-          v-for="(item, index) in home.config.reasonList"
-          :key="index"
-          class="bg-[--website-layer-card-background] rounded-xl p-5 border border-[--website-layer-card-border]"
-          :class="{ 'col-span-2': index === home.config.reasonList.length - 1 }"
-        >
-          <div class="w-full flex-auto">
-            <span class="text-2xl font-semibold">{{ item.title }}</span>
-            <p class="text-[--website-font-secondary]">{{ item.content }}</p>
-            <div class="size-72"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <homeReason :reasonList="home.config.reasonList"></homeReason>
 
     <div class="max-w-5xl mx-auto my-5">
       <homeOffice :setting="home.config.office"></homeOffice>
@@ -84,6 +66,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import NCarousel from '@/components/nCarousel.vue'
+import homeReason from '@/components/homeReason.vue'
 import homeOffice from '@/components/homeOffice.vue'
 import homeApps from '@/components/homeApps.vue'
 import homeOpenSource from '@/components/homeOpenSource.vue'

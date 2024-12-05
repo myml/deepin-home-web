@@ -106,9 +106,161 @@ const homeConfigMockData = {
     {
       title: '代码开源',
       content:
-        '我们遵循开源软件许可证协议发布源代码，相关项目和源代码均可在 GitHub 上进行查看。'
-    }
-  ],
+        '我们遵循开源软件许可证协议发布源代码，相关项目和源代码均可在 GitHub 上进行查看。',
+      repos: [
+
+        {
+          title: 'action-conventionalcommits-checker',
+          link: ''
+        },
+        {
+          title: 'action-cppcheck',
+          link: ''
+        },
+        {
+          title: 'action-doxygencheck',
+          link: ''
+        },
+        {
+          title: 'action-organization-manager',
+          link: ''
+        },
+        {
+          title: 'action-sync',
+          link: ''
+        },
+        {
+          title: 'action-teams-manager',
+          link: ''
+        },
+        {
+          title: 'bbs-mobile-web',
+          link: ''
+        },
+        {
+          title: 'blur-effect',
+          link: ''
+        },
+        {
+          title: 'cla',
+          link: ''
+        },
+        {
+          title: 'contributor-assistant-github-action',
+          link: ''
+        },
+        {
+          title: 'dareader',
+          link: ''
+        },
+        {
+          title: 'dcc-insider-plugin',
+          link: ''
+        },
+        {
+          title: 'dci-icon-theme',
+          link: ''
+        },
+        {
+          title: 'dde',
+          link: ''
+        },
+        {
+          title: 'dde-account-faces',
+          link: ''
+        },
+        {
+          title: 'dde-api',
+          link: ''
+        },
+        {
+          title: 'dde-api-proxy',
+          link: ''
+        },
+        {
+          title: 'dde-app-services',
+          link: ''
+        },
+        {
+          title: 'dde-appearance',
+          link: ''
+        },
+        {
+          title: 'dde-application-manager',
+          link: ''
+        },
+        {
+          title: 'dde-application-wizard',
+          link: ''
+        },
+        {
+          title: 'dde-calendar',
+          link: ''
+        },
+        {
+          title: 'dde-clipboard',
+          link: ''
+        },
+        {
+          title: 'dde-control-center',
+          link: ''
+        },
+        {
+          title: 'dde-cooperation',
+          link: ''
+        },
+        {
+          title: 'dde-daemon',
+          link: ''
+        },
+        {
+          title: 'dde-device-formatter',
+          link: ''
+        },
+        {
+          title: 'dde-desktop',
+          link: ''
+        },
+        {
+          title: 'dde-desktop-icons',
+          link: ''
+        },
+        {
+          title: 'dde-desktop-schemas',
+          link: ''
+        },
+        {
+          title: 'dde-desktop-tools',
+          link: ''
+        },
+        {
+          title: 'dde-dock',
+          link: ''
+        },
+        {
+          title: 'dde-dock-plugins',
+          link: ''
+        },
+        {
+          title: 'dde-dock-settings',
+          link: ''
+        },
+        {
+          title: 'dde-dock-translations',
+          link: ''
+        },
+        {
+          title: 'dde-file-manager',
+          link: ''
+        },
+        {
+          title: 'dde-file-manager-plugins',
+          link: ''
+
+        }
+      ],
+    }],
+
   office: {
     title: '特色功能实用更高效',
     content:

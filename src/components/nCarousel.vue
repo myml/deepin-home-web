@@ -119,7 +119,6 @@ function adjustCarouselItems() {
         `class${current.value === length - 1 ? 0 : current.value + 1}`
       )[0] as HTMLDivElement
     }
-    console.log(lefts, rights)
     if (lefts) {
       lefts.style.transform = `translateX(-${55}%)`
     }
@@ -140,7 +139,6 @@ const openUrl = (url: string, index: number = -1) => {
 const filterExpired = () => {
   return props.valueList.filter(item => {
     const now = dayjs()
-    console.log(now.isAfter(item.online_time), now.isBefore(item.downline_time))
     return now.isAfter(item.online_time) || now.isBefore(item.downline_time)
   })
 }

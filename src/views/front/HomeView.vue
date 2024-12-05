@@ -7,7 +7,7 @@
       class="my-5"
     />
     <!-- 选择deepin的理由 -->
-    <homeReason :reasonList="home.config.reasonList"></homeReason>
+    <homeReason :reason="home.config.reason"></homeReason>
 
     <div class="max-w-5xl mx-auto my-5">
       <homeOffice :setting="home.config.office"></homeOffice>

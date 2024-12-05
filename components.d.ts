@@ -31,6 +31,7 @@ declare module 'vue' {
     ElPageHeader: typeof import('element-plus/es')['ElPageHeader']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabPanel: typeof import('element-plus/es')['ElTabPanel']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
     Footer: typeof import('./src/components/Footer.vue')['default']

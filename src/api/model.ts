@@ -1,7 +1,7 @@
 export interface HomeConfig {
   seo: Seo
   carousel: Carousel
-  reasonList: { title: string; content: string, repos: { title: string, link: string }[] }[]
+  reason: Reason
   office: Office
   apps: Apps
   footer: Footer
@@ -29,6 +29,15 @@ export interface CarouselCard {
   links: {
     title: string
     url: string
+  }[]
+}
+
+export interface Reason {
+  title: string;
+  cards: {
+    title: string;
+    content: string;
+    repos?: { title: string, link: string }[]
   }[]
 }
 

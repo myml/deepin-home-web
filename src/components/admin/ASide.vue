@@ -20,7 +20,7 @@
         <el-icon><icon-menu /></el-icon>
         <span>轮播图</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="/admin/reason">
         <el-icon><icon-menu /></el-icon>
         <span>选择deepin的理由</span>
       </el-menu-item>

@@ -20,6 +20,11 @@ const router = createRouter({
               path: 'carousel',
               name: "轮播图",
               component: () => import('@/views/admin/CarouselView.vue')
+            },
+            {
+              path: 'reason',
+              name: "选择deepin的理由",
+              component: () => import('@/views/admin/ReasonView.vue')
             }
           ]
         },

@@ -1,19 +1,19 @@
 <template>
   <div class="max-w-5xl mx-auto my-5">
     <div class="text-3xl font-semibold">
-      <span v-html="highlightDeepin(t('tips.reason'))" />
+      <span v-html="highlightDeepin(reason.title)"></span>
     </div>
     <div class="grid grid-cols-3 gap-5 mt-5">
       <div
-        v-for="(item, index) in reasonList"
+        v-for="(item, index) in reason.cards"
         :key="index"
         class="h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]"
         :class="{
-          'col-span-2': index === reasonList.length - 1,
-          'p-5': index !== reasonList.length - 1
+          'col-span-2': index === reason.cards.length - 1,
+          'p-5': index !== reason.cards.length - 1
         }"
       >
-        <div v-if="index !== reasonList.length - 1" class="w-full flex-auto">
+        <div v-if="index !== reason.cards.length - 1" class="w-full flex-auto">
           <span class="text-2xl">{{ item.title }}</span>
           <p class="text-[--website-font-secondary] mt-[7px]">
             {{ item.content }}
@@ -55,18 +55,13 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { highlightDeepin } from '@/utils/format'
 import { ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
+import type { Reason } from '@/api/model'
 
-const { t } = useI18n()
-const { reasonList } = defineProps<{
-  reasonList: {
-    title: string
-    content: string
-    repos: { title: string; link: string }[]
-  }[]
+const { reason } = defineProps<{
+  reason: Reason
 }>()
 
 const reposRow = ref(6)
@@ -106,7 +101,12 @@ useIntersectionObserver(codeOpenSource, ([entry]) => {
 })
 
 // 分配数据
-const calculateRepos = (_repos: { title: string; link: string }[]) => {
+const calculateRepos = (
+  _repos: { title: string; link: string }[] | undefined
+) => {
+  if (!_repos) {
+    return
+  }
   const result: { title: string; link: string }[][] = []
   // 创建6个空数组
   for (let i = 0; i < reposRow.value; i++) {
@@ -127,6 +127,5 @@ const calculateRepos = (_repos: { title: string; link: string }[]) => {
   }
   repos.value = result
 }
-
-calculateRepos(reasonList[reasonList.length - 1].repos)
+calculateRepos(reason.cards[reason.cards.length - 1].repos)
 </script>

@@ -35,6 +35,11 @@ const router = createRouter({
               path: 'apps',
               name: "生产力工具",
               component: () => import('@/views/admin/AppsView.vue')
+            },
+            {
+              path: 'footer',
+              name: "页脚配置",
+              component: () => import('@/views/admin/FooterView.vue')
             }
           ]
         },

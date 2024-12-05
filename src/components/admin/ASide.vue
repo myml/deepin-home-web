@@ -32,9 +32,9 @@
         <el-icon><icon-menu /></el-icon>
         <span>生产力工具</span>
       </el-menu-item>
-      <el-menu-item index="6">
+      <el-menu-item index="/admin/footer">
         <el-icon><icon-menu /></el-icon>
-        <span>新闻资讯</span>
+        <span>Footer配置</span>
       </el-menu-item>
     </el-menu></el-aside
   >

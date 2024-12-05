@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+  <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="中文" name="chinese">
       <el-form>
         <el-form-item label="标题">
@@ -84,7 +84,7 @@
     width="500"
     align-center
   >
-    <el-form label-width="auto">
+    <el-form label-width="100">
       <el-form-item label="标签名称">
         <el-input
           v-model="addKeywordTitle"

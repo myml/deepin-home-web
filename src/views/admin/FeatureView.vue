@@ -1,50 +1,130 @@
 <template>
-  <el-form label-width="auto">
-    <el-form-item label="标题">
-      <el-input v-model="feature.title" placeholder="请输入标题"></el-input>
-    </el-form-item>
-    <el-form-item label="内容">
-      <el-input
-        v-model="feature.content"
-        type="textarea"
-        placeholder="请输入内容"
-      ></el-input>
-    </el-form-item>
-    <el-card v-for="(card, index) in feature.cards" :key="index" class="mt-3">
-      <el-form label-width="auto">
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane label="中文" name="chinese">
+      <el-form label-width="100">
         <el-form-item label="标题">
-          <el-input v-model="card.title" placeholder="请输入标题"></el-input>
+          <el-input v-model="feature.title" placeholder="请输入标题"></el-input>
         </el-form-item>
         <el-form-item label="内容">
           <el-input
-            v-model="card.content"
+            v-model="feature.content"
             type="textarea"
             placeholder="请输入内容"
           ></el-input>
         </el-form-item>
-        <el-form-item label="图片">
-          <el-input v-model="card.image" placeholder="请输入图片"></el-input>
-        </el-form-item>
-        <el-form-item label="封面">
-          <el-input v-model="card.cover" placeholder="请输入封面"></el-input>
-        </el-form-item>
-        <el-form-item label="链接">
-          <el-input v-model="card.url" placeholder="请输入链接"></el-input>
+        <el-card
+          v-for="(card, index) in feature.cards"
+          :key="index"
+          class="mt-3"
+        >
+          <el-form label-width="100">
+            <el-form-item label="标题">
+              <el-input
+                v-model="card.title"
+                placeholder="请输入标题"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="内容">
+              <el-input
+                v-model="card.content"
+                type="textarea"
+                placeholder="请输入内容"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="图片">
+              <el-input
+                v-model="card.image"
+                placeholder="请输入图片"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="封面">
+              <el-input
+                v-model="card.cover"
+                placeholder="请输入封面"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="链接">
+              <el-input v-model="card.url" placeholder="请输入链接"></el-input>
+            </el-form-item>
+          </el-form>
+        </el-card>
+        <el-form-item class="mt-3">
+          <el-button
+            type="primary"
+            size="large"
+            class="block"
+            @click="saveFeature"
+            >保存</el-button
+          >
         </el-form-item>
       </el-form>
-    </el-card>
-    <el-form-item class="mt-3">
-      <el-button type="primary" size="large" class="block" @click="saveFeature"
-        >保存</el-button
-      >
-    </el-form-item>
-  </el-form>
+    </el-tab-pane>
+    <el-tab-pane label="英文" name="english">
+      <el-form label-width="100">
+        <el-form-item label="标题">
+          <el-input v-model="feature.title" placeholder="请输入标题"></el-input>
+        </el-form-item>
+        <el-form-item label="内容">
+          <el-input
+            v-model="feature.content"
+            type="textarea"
+            placeholder="请输入内容"
+          ></el-input>
+        </el-form-item>
+        <el-card
+          v-for="(card, index) in feature.cards"
+          :key="index"
+          class="mt-3"
+        >
+          <el-form label-width="100">
+            <el-form-item label="标题">
+              <el-input
+                v-model="card.title"
+                placeholder="请输入标题"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="内容">
+              <el-input
+                v-model="card.content"
+                type="textarea"
+                placeholder="请输入内容"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="图片">
+              <el-input
+                v-model="card.image"
+                placeholder="请输入图片"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="封面">
+              <el-input
+                v-model="card.cover"
+                placeholder="请输入封面"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="链接">
+              <el-input v-model="card.url" placeholder="请输入链接"></el-input>
+            </el-form-item>
+          </el-form>
+        </el-card>
+        <el-form-item class="mt-3">
+          <el-button
+            type="primary"
+            size="large"
+            class="block"
+            @click="saveFeature"
+            >保存</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </el-tab-pane>
+  </el-tabs>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Feature } from '@/api/model'
-import { ElMessage } from 'element-plus'
+import { ElMessage, type TabsPaneContext } from 'element-plus'
 
 if (!localStorage.getItem('feature')) {
   localStorage.setItem(
@@ -91,6 +171,11 @@ if (!localStorage.getItem('feature')) {
   )
 }
 
+const activeName = ref('chinese')
+
+const handleClick = (tab: TabsPaneContext) => {
+  activeName.value = tab.props.label
+}
 const feature = ref<Feature>(
   JSON.parse(localStorage.getItem('feature') || '{}')
 )

@@ -1,7 +1,7 @@
 <template>
-  <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+  <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="中文" name="chinese">
-      <el-form label-width="auto">
+      <el-form label-width="100">
         <el-form-item label="标题">
           <el-input v-model="reason.title" placeholder="请输入标题"></el-input>
         </el-form-item>
@@ -10,7 +10,7 @@
           :key="cardIndex"
           class="my-3"
         >
-          <el-form label-width="auto">
+          <el-form label-width="100">
             <el-form-item label="标题">
               <el-input v-model="r.title" placeholder="请输入标题"></el-input>
             </el-form-item>

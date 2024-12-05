@@ -33,7 +33,7 @@
       <el-form-item label="轮播间隔（毫秒）"
         ><el-input v-model="card.interval" placeholder="请输入轮播间隔"
       /></el-form-item>
-      <el-form-item label-width="auto">
+      <el-form-item label-width="100">
         <el-form-item label="上线时间">
           <el-date-picker
             v-model="card.online_time"
@@ -102,7 +102,7 @@
     width="500"
     align-center
   >
-    <el-form label-width="auto" v-model="addTagForm">
+    <el-form label-width="100" v-model="addTagForm">
       <el-form-item label="按钮文本">
         <el-input
           v-model="addTagForm.title"

@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" class="carousel-tab" @tab-click="handleClick">
+  <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="中文" name="chinese" ref="elTabPaneRef">
       <CarouselCard v-model:cards="carouselList.cards" @save="saveCarousel" />
     </el-tab-pane>

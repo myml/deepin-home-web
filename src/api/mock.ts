@@ -263,7 +263,7 @@ const homeConfigMockData = {
         ],
       }],
   },
-  office: {
+  feature: {
     title: '特色功能实用更高效',
     content:
       'deepin根据用户使用习惯自研开发40余款应用，为用户提供了更高效、便捷的办公能力！',

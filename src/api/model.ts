@@ -2,7 +2,7 @@ export interface HomeConfig {
   seo: Seo
   carousel: Carousel
   reason: Reason
-  office: Office
+  feature: Feature
   apps: Apps
   footer: Footer
 }
@@ -75,7 +75,7 @@ export interface Footer {
   };
 }
 
-export interface Office {
+export interface Feature {
   title: string
   content: string
   cards: {

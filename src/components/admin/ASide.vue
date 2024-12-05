@@ -24,7 +24,7 @@
         <el-icon><icon-menu /></el-icon>
         <span>选择deepin的理由</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="/admin/feature">
         <el-icon><icon-menu /></el-icon>
         <span>特色功能</span>
       </el-menu-item>

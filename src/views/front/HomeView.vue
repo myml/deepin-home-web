@@ -10,7 +10,7 @@
     <homeReason :reason="home.config.reason"></homeReason>
 
     <div class="max-w-5xl mx-auto my-5">
-      <homeOffice :setting="home.config.office"></homeOffice>
+      <homeOffice :setting="home.config.feature"></homeOffice>
     </div>
 
     <div class="max-w-5xl mx-auto my-5">

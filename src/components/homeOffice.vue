@@ -1,5 +1,5 @@
 <template>
-  <div class="text-3xl font-semibold" v-html="t('tips.productivity')"></div>
+  <div class="text-3xl font-semibold" v-html="setting.title"></div>
   <section class="grid grid-cols-4 gap-6 mt-5">
     <div
       class="flex flex-col bg-[--website-layer-card-background] pb-2 rounded-xl border border-[--website-layer-card-border]"
@@ -40,12 +40,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Office } from '@/api/model'
+import type { Feature } from '@/api/model'
 import play from '@/assets/play.svg'
-import { useI18n } from 'vue-i18n'
 
 const { setting } = defineProps<{
-  setting: Office
+  setting: Feature
 }>()
-const { t } = useI18n()
 </script>

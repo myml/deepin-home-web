@@ -25,6 +25,11 @@ const router = createRouter({
               path: 'reason',
               name: "选择deepin的理由",
               component: () => import('@/views/admin/ReasonView.vue')
+            },
+            {
+              path: 'feature',
+              name: "特色功能",
+              component: () => import('@/views/admin/FeatureView.vue')
             }
           ]
         },

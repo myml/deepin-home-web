@@ -66,6 +66,7 @@ const { reason } = defineProps<{
 
 const reposRow = ref(6)
 const repos = ref<{ title: string; link: string }[][]>([])
+const reposCopy = ref<{ title: string; link: string }[][]>([])
 // 检测代码开源区域的可见性，动态的滚动和停止滚动
 const codeOpenSource = ref(null)
 const codeOpenSourceVisible = ref(false)
@@ -87,8 +88,8 @@ useIntersectionObserver(codeOpenSource, ([entry]) => {
 
       // 滚动到最后一个元素的时候，复制一份
       if (codeOpenSourceTranslateX.value <= -50 * repos.value[0].length) {
-        repos.value.forEach((row, index) => {
-          repos.value[index] = [...row, ...row]
+        repos.value.forEach((_row, index) => {
+          repos.value[index].push(...reposCopy.value[index])
         })
       }
     }, 50)
@@ -107,6 +108,8 @@ const calculateRepos = (
   if (!_repos) {
     return
   }
+  repos.value = []
+  reposCopy.value = []
   const result: { title: string; link: string }[][] = []
   // 创建6个空数组
   for (let i = 0; i < reposRow.value; i++) {
@@ -126,6 +129,7 @@ const calculateRepos = (
     result[minIndex].push(_repos[i])
   }
   repos.value = result
+  reposCopy.value = result
 }
 calculateRepos(reason.cards[reason.cards.length - 1].repos)
 </script>

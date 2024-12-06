@@ -3,55 +3,63 @@
     <el-tab-pane label="中文" name="chinese">
       <el-form label-width="100">
         <el-form-item label="导航">
-          <el-card
+          <div
             v-for="(nav, index) in footer.navs"
             :key="index"
-            class="mt-2 w-full"
+            class="w-full mt-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
           >
             <el-form-item label="标题">
               <el-input v-model="nav.title" placeholder="请输入标题"></el-input>
             </el-form-item>
-            <el-form-item label="链接">
-              <el-card
-                v-for="(link, linkIndex) in nav.links"
-                :key="linkIndex"
-                class="mt-2"
-                :class="{ 'ml-2': linkIndex % 4 !== 0 }"
-              >
-                <el-form label-width="60">
-                  <el-form-item label="文本">
-                    <el-input
-                      v-model="link.text"
-                      placeholder="请输入文本"
-                    ></el-input>
-                  </el-form-item>
-                  <el-form-item label="URL" class="mt-2">
-                    <el-input
-                      v-model="link.url"
-                      placeholder="请输入URL"
-                    ></el-input>
-                  </el-form-item>
-                </el-form>
-              </el-card>
+            <el-form-item label="链接" class="mt-2">
+              <div class="w-full grid grid-cols-5 rounded-sm overflow-hidde">
+                <div
+                  v-for="(link, linkIndex) in nav.links"
+                  :key="linkIndex"
+                  class="p-5 border border-[--website-layer-card-border] border-solid"
+                >
+                  <el-form label-width="60">
+                    <el-form-item label="文本">
+                      <el-input
+                        v-model="link.text"
+                        placeholder="请输入文本"
+                      ></el-input>
+                    </el-form-item>
+                    <el-form-item label="URL" class="mt-2">
+                      <el-input
+                        v-model="link.url"
+                        placeholder="请输入URL"
+                      ></el-input>
+                    </el-form-item>
+                  </el-form>
+                </div>
+              </div>
             </el-form-item>
-          </el-card>
+          </div>
         </el-form-item>
         <el-form-item label="二维码">
-          <el-card
-            v-for="(qr, index) in footer.qr.imgs"
-            :key="index"
-            class="mt-2"
-            :class="{ 'ml-2': index !== 0 }"
-          >
-            <el-form label-width="100">
-              <el-form-item label="文本">
-                <el-input v-model="qr.text" placeholder="请输入文本"></el-input>
-              </el-form-item>
-              <el-form-item label="二维码链接" class="mt-2">
-                <el-input v-model="qr.img" placeholder="请输入图片"></el-input>
-              </el-form-item>
-            </el-form>
-          </el-card>
+          <div class="w-full grid grid-cols-5 rounded-sm overflow-hidden">
+            <div
+              v-for="(qr, index) in footer.qr.imgs"
+              :key="index"
+              class="p-5 border border-[--website-layer-card-border] border-solid"
+            >
+              <el-form label-width="100">
+                <el-form-item label="文本">
+                  <el-input
+                    v-model="qr.text"
+                    placeholder="请输入文本"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="二维码链接" class="mt-2">
+                  <el-input
+                    v-model="qr.img"
+                    placeholder="请输入图片"
+                  ></el-input>
+                </el-form-item>
+              </el-form>
+            </div>
+          </div>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="saveFooter">保存</el-button>
@@ -61,51 +69,63 @@
     <el-tab-pane label="英文" name="english">
       <el-form label-width="100">
         <el-form-item label="导航">
-          <el-card
+          <div
             v-for="(nav, index) in footer.navs"
             :key="index"
-            class="mt-2 w-full"
+            class="w-full mt-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
           >
             <el-form-item label="标题">
               <el-input v-model="nav.title" placeholder="请输入标题"></el-input>
             </el-form-item>
-            <el-form-item label="链接">
-              <el-card
-                v-for="(link, linkIndex) in nav.links"
-                :key="linkIndex"
-                class="mt-2"
-                :class="{ 'ml-2': linkIndex % 4 !== 0 }"
-              >
+            <el-form-item label="链接" class="mt-2">
+              <div class="w-full grid grid-cols-5 rounded-sm overflow-hidde">
+                <div
+                  v-for="(link, linkIndex) in nav.links"
+                  :key="linkIndex"
+                  class="p-5 border border-[--website-layer-card-border] border-solid"
+                >
+                  <el-form label-width="60">
+                    <el-form-item label="文本">
+                      <el-input
+                        v-model="link.text"
+                        placeholder="请输入文本"
+                      ></el-input>
+                    </el-form-item>
+                    <el-form-item label="URL" class="mt-2">
+                      <el-input
+                        v-model="link.url"
+                        placeholder="请输入URL"
+                      ></el-input>
+                    </el-form-item>
+                  </el-form>
+                </div>
+              </div>
+            </el-form-item>
+          </div>
+        </el-form-item>
+        <el-form-item label="二维码">
+          <div class="w-full grid grid-cols-5 rounded-sm overflow-hidden">
+            <div
+              v-for="(qr, index) in footer.qr.imgs"
+              :key="index"
+              class="p-5 border border-[--website-layer-card-border] border-solid"
+            >
+              <el-form label-width="100">
                 <el-form-item label="文本">
                   <el-input
-                    v-model="link.text"
+                    v-model="qr.text"
                     placeholder="请输入文本"
                   ></el-input>
                 </el-form-item>
-                <el-form-item label="URL" class="mt-2">
+                <el-form-item label="二维码链接" class="mt-2">
                   <el-input
-                    v-model="link.url"
-                    placeholder="请输入URL"
+                    v-model="qr.img"
+                    placeholder="请输入图片"
                   ></el-input>
                 </el-form-item>
-              </el-card>
-            </el-form-item>
-          </el-card>
-        </el-form-item>
-        <el-form-item label="二维码">
-          <el-card
-            v-for="(qr, index) in footer.qr.imgs"
-            :key="index"
-            class="mt-2"
-            :class="{ 'ml-2': index !== 0 }"
-          >
-            <el-form-item label="文本">
-              <el-input v-model="qr.text" placeholder="请输入文本"></el-input>
-            </el-form-item>
-            <el-form-item label="二维码链接" class="mt-2">
-              <el-input v-model="qr.img" placeholder="请输入图片"></el-input>
-            </el-form-item>
-          </el-card>
+              </el-form>
+            </div>
+          </div>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="saveFooter">保存</el-button>

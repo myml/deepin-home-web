@@ -2,27 +2,29 @@
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="中文" name="chinese">
       <el-form label-width="100">
-        <el-form-item label="标题">
+        <el-form-item label="section标题" size="large">
           <el-input v-model="reason.title" placeholder="请输入标题"></el-input>
         </el-form-item>
-        <el-card
+        <el-form
+          label-width="40"
           v-for="(r, cardIndex) in reason.cards"
           :key="cardIndex"
-          class="my-3"
+          class="my-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
         >
-          <el-form label-width="100">
-            <el-form-item label="标题">
-              <el-input v-model="r.title" placeholder="请输入标题"></el-input>
-            </el-form-item>
-            <el-form-item label="描述">
-              <el-input
-                type="textarea"
-                v-model="r.content"
-                placeholder="请输入描述"
-              ></el-input>
-            </el-form-item>
-          </el-form>
-        </el-card>
+          <el-check-tag checked type="success" disabled class="mb-3">{{
+            cardIndex + 1
+          }}</el-check-tag>
+          <el-form-item label="标题">
+            <el-input v-model="r.title" placeholder="请输入标题"></el-input>
+          </el-form-item>
+          <el-form-item label="描述" class="mb-0">
+            <el-input
+              type="textarea"
+              v-model="r.content"
+              placeholder="请输入描述"
+            ></el-input>
+          </el-form-item>
+        </el-form>
         <el-form-item>
           <el-button
             type="primary"

@@ -2,59 +2,58 @@
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="中文" name="chinese">
       <el-form label-width="100">
-        <el-form-item label="标题">
+        <el-form-item label="标题" size="large">
           <el-input v-model="apps.title" placeholder="请输入标题"></el-input>
         </el-form-item>
-        <el-form-item label="内容">
+        <el-form-item label="内容" size="large">
           <el-input
             v-model="apps.content"
             type="textarea"
             placeholder="请输入内容"
           ></el-input>
         </el-form-item>
-        <el-card v-for="(card, index) in apps.cards" :key="index" class="mt-3">
-          <el-form label-width="100">
-            <el-form-item label="标题">
-              <el-input
-                v-model="card.title"
-                placeholder="请输入标题"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="内容">
-              <el-input
-                v-model="card.content"
-                type="textarea"
-                placeholder="请输入内容"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="应用列表">
-              <el-row>
-                <el-col
-                  :span="12"
-                  v-for="(list, index) in card.list"
-                  :key="index"
-                >
-                  <el-card class="m-2">
-                    <el-form label-width="100">
-                      <el-form-item label="应用名称">
-                        <el-input
-                          v-model="list.title"
-                          placeholder="请输入标题"
-                        ></el-input>
-                      </el-form-item>
-                      <el-form-item label="应用图标">
-                        <el-input
-                          v-model="list.image"
-                          placeholder="请输入图片"
-                        ></el-input>
-                      </el-form-item>
-                    </el-form>
-                  </el-card>
-                </el-col>
-              </el-row>
-            </el-form-item>
-          </el-form>
-        </el-card>
+
+        <div
+          label-width="100"
+          v-for="(card, index) in apps.cards"
+          :key="index"
+          class="mt-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
+        >
+          <el-form-item label="标题">
+            <el-input v-model="card.title" placeholder="请输入标题"></el-input>
+          </el-form-item>
+          <el-form-item label="内容">
+            <el-input
+              v-model="card.content"
+              type="textarea"
+              placeholder="请输入内容"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="应用列表">
+            <div class="w-full grid grid-cols-3 rounded-sm overflow-hidden">
+              <div
+                v-for="(list, index) in card.list"
+                :key="index"
+                class="p-5 border border-[--website-layer-card-border] border-solid"
+              >
+                <el-form label-width="80">
+                  <el-form-item label="应用名称">
+                    <el-input
+                      v-model="list.title"
+                      placeholder="请输入标题"
+                    ></el-input>
+                  </el-form-item>
+                  <el-form-item label="应用图标" class="mt-3">
+                    <el-input
+                      v-model="list.image"
+                      placeholder="请输入图片"
+                    ></el-input>
+                  </el-form-item>
+                </el-form>
+              </div>
+            </div>
+          </el-form-item>
+        </div>
         <el-form-item class="mt-2">
           <el-button type="primary" @click="saveApps">保存</el-button>
         </el-form-item>
@@ -62,59 +61,58 @@
     </el-tab-pane>
     <el-tab-pane label="英文" name="english">
       <el-form label-width="100">
-        <el-form-item label="标题">
+        <el-form-item label="标题" size="large">
           <el-input v-model="apps.title" placeholder="请输入标题"></el-input>
         </el-form-item>
-        <el-form-item label="内容">
+        <el-form-item label="内容" size="large">
           <el-input
             v-model="apps.content"
             type="textarea"
             placeholder="请输入内容"
           ></el-input>
         </el-form-item>
-        <el-card v-for="(card, index) in apps.cards" :key="index" class="mt-3">
-          <el-form label-width="100">
-            <el-form-item label="标题">
-              <el-input
-                v-model="card.title"
-                placeholder="请输入标题"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="内容">
-              <el-input
-                v-model="card.content"
-                type="textarea"
-                placeholder="请输入内容"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="应用列表">
-              <el-row>
-                <el-col
-                  :span="12"
-                  v-for="(list, index) in card.list"
-                  :key="index"
-                >
-                  <el-card class="m-2">
-                    <el-form label-width="100">
-                      <el-form-item label="应用名称">
-                        <el-input
-                          v-model="list.title"
-                          placeholder="请输入标题"
-                        ></el-input>
-                      </el-form-item>
-                      <el-form-item label="应用图标">
-                        <el-input
-                          v-model="list.image"
-                          placeholder="请输入图片"
-                        ></el-input>
-                      </el-form-item>
-                    </el-form>
-                  </el-card>
-                </el-col>
-              </el-row>
-            </el-form-item>
-          </el-form>
-        </el-card>
+
+        <div
+          label-width="100"
+          v-for="(card, index) in apps.cards"
+          :key="index"
+          class="mt-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
+        >
+          <el-form-item label="标题">
+            <el-input v-model="card.title" placeholder="请输入标题"></el-input>
+          </el-form-item>
+          <el-form-item label="内容">
+            <el-input
+              v-model="card.content"
+              type="textarea"
+              placeholder="请输入内容"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="应用列表">
+            <div class="w-full grid grid-cols-3 rounded-sm overflow-hidden">
+              <div
+                v-for="(list, index) in card.list"
+                :key="index"
+                class="p-5 border border-[--website-layer-card-border] border-solid"
+              >
+                <el-form label-width="80">
+                  <el-form-item label="应用名称">
+                    <el-input
+                      v-model="list.title"
+                      placeholder="请输入标题"
+                    ></el-input>
+                  </el-form-item>
+                  <el-form-item label="应用图标" class="mt-3">
+                    <el-input
+                      v-model="list.image"
+                      placeholder="请输入图片"
+                    ></el-input>
+                  </el-form-item>
+                </el-form>
+              </div>
+            </div>
+          </el-form-item>
+        </div>
         <el-form-item class="mt-2">
           <el-button type="primary" @click="saveApps">保存</el-button>
         </el-form-item>

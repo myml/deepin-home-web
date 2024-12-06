@@ -1,53 +1,46 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="中文" name="chinese">
-      <el-form label-width="100">
-        <el-form-item label="标题">
+      <el-form label-width="70">
+        <el-form-item label="标题" size="large">
           <el-input v-model="feature.title" placeholder="请输入标题"></el-input>
         </el-form-item>
-        <el-form-item label="内容">
+        <el-form-item label="内容" size="large">
           <el-input
             v-model="feature.content"
             type="textarea"
             placeholder="请输入内容"
           ></el-input>
         </el-form-item>
-        <el-card
+        <el-form
+          label-width="60"
           v-for="(card, index) in feature.cards"
           :key="index"
-          class="mt-3"
+          class="mt-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
         >
-          <el-form label-width="100">
-            <el-form-item label="标题">
-              <el-input
-                v-model="card.title"
-                placeholder="请输入标题"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="内容">
-              <el-input
-                v-model="card.content"
-                type="textarea"
-                placeholder="请输入内容"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="图片">
-              <el-input
-                v-model="card.image"
-                placeholder="请输入图片"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="封面">
-              <el-input
-                v-model="card.cover"
-                placeholder="请输入封面"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="链接">
-              <el-input v-model="card.url" placeholder="请输入链接"></el-input>
-            </el-form-item>
-          </el-form>
-        </el-card>
+          <el-check-tag checked type="success" disabled class="mb-3">{{
+            index + 1
+          }}</el-check-tag>
+          <el-form-item label="标题">
+            <el-input v-model="card.title" placeholder="请输入标题"></el-input>
+          </el-form-item>
+          <el-form-item label="内容">
+            <el-input
+              v-model="card.content"
+              type="textarea"
+              placeholder="请输入内容"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="图片">
+            <el-input v-model="card.image" placeholder="请输入图片"></el-input>
+          </el-form-item>
+          <el-form-item label="封面">
+            <el-input v-model="card.cover" placeholder="请输入封面"></el-input>
+          </el-form-item>
+          <el-form-item label="链接">
+            <el-input v-model="card.url" placeholder="请输入链接"></el-input>
+          </el-form-item>
+        </el-form>
         <el-form-item class="mt-3">
           <el-button
             type="primary"
@@ -60,53 +53,46 @@
       </el-form>
     </el-tab-pane>
     <el-tab-pane label="英文" name="english">
-      <el-form label-width="100">
-        <el-form-item label="标题">
+      <el-form label-width="70">
+        <el-form-item label="标题" size="large">
           <el-input v-model="feature.title" placeholder="请输入标题"></el-input>
         </el-form-item>
-        <el-form-item label="内容">
+        <el-form-item label="内容" size="large">
           <el-input
             v-model="feature.content"
             type="textarea"
             placeholder="请输入内容"
           ></el-input>
         </el-form-item>
-        <el-card
+        <el-form
+          label-width="60"
           v-for="(card, index) in feature.cards"
           :key="index"
-          class="mt-3"
+          class="mt-3 border border-[--website-layer-card-border] p-4 rounded-lg shadow-md"
         >
-          <el-form label-width="100">
-            <el-form-item label="标题">
-              <el-input
-                v-model="card.title"
-                placeholder="请输入标题"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="内容">
-              <el-input
-                v-model="card.content"
-                type="textarea"
-                placeholder="请输入内容"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="图片">
-              <el-input
-                v-model="card.image"
-                placeholder="请输入图片"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="封面">
-              <el-input
-                v-model="card.cover"
-                placeholder="请输入封面"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="链接">
-              <el-input v-model="card.url" placeholder="请输入链接"></el-input>
-            </el-form-item>
-          </el-form>
-        </el-card>
+          <el-check-tag checked type="success" disabled class="mb-3">{{
+            index + 1
+          }}</el-check-tag>
+          <el-form-item label="标题">
+            <el-input v-model="card.title" placeholder="请输入标题"></el-input>
+          </el-form-item>
+          <el-form-item label="内容">
+            <el-input
+              v-model="card.content"
+              type="textarea"
+              placeholder="请输入内容"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="图片">
+            <el-input v-model="card.image" placeholder="请输入图片"></el-input>
+          </el-form-item>
+          <el-form-item label="封面">
+            <el-input v-model="card.cover" placeholder="请输入封面"></el-input>
+          </el-form-item>
+          <el-form-item label="链接">
+            <el-input v-model="card.url" placeholder="请输入链接"></el-input>
+          </el-form-item>
+        </el-form>
         <el-form-item class="mt-3">
           <el-button
             type="primary"

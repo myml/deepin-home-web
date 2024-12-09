@@ -9,13 +9,15 @@ export default withNuxt(
       '**/pages/**/*.{js,ts,vue}',
       '**/layouts/**/*.{js,ts,vue}',
       '**/app.{js,ts,vue}',
-      '**/error.{js,ts,vue}'
+      '**/error.{js,ts,vue}',
+      '**/api/*.{js,ts}'
     ],
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/no-v-html': 'off',
       'vue/no-template-shadow': 'off',
-      'vue/html-self-closing': 'off'
+      'vue/html-self-closing': 'off',
+      'no-useless-escape': 'off'
     }
   }
 )

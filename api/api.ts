@@ -2,7 +2,7 @@ import request from '@/utils/request'
 import type { HomeConfig, News, OpenSource } from './model'
 
 export class API {
-  async getHomeConfig(lang: string) {
+  getHomeConfig(lang: string) {
     return request
       .get<HomeConfig>('/api/v1/public/config/home_' + lang)
       .then(resp => resp.data)
@@ -11,12 +11,12 @@ export class API {
     await request.post('/api/v1/public/config/home_' + lang, config)
   }
 
-  async getOpenSource() {
+  getOpenSource() {
     return request
-      .get<OpenSource>('/api/v1/public/opensource')
+      .get<OpenSource>('https://www.deepin.org/api/datastat/summary')
       .then(resp => resp.data)
   }
-  async getCommunityDynamic(lang: string) {
+  getCommunityDynamic(lang: string) {
     return request
       .get<News[]>(`https://www.deepin.org/${lang}/wp-json/wp/v2/posts`)
       .then(resp => resp.data)

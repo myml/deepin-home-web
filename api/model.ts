@@ -67,12 +67,13 @@ export interface News {
 }
 
 export interface OpenSource {
-  pull_request: number
-  commits: number
-  contributors: number
-  repositories: number
-  issues: number
-  teams: number
+  commits: number;
+  dev: number;
+  issues: number;
+  pull_request: number;
+  repo: number;
+  team: number;
+  user: number;
 }
 
 export interface Footer {

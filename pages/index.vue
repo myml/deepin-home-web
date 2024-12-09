@@ -77,7 +77,6 @@ const _result = await useAsyncData('home', () => {
 const parseImgUrl = (content: string) => {
   const reg = /<img.*?src="(.*?)".*?>/g
   const result = reg.exec(content)
-  console.log(result)
   return result ? result[1] : ''
 }
 

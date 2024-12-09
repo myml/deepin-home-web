@@ -83,12 +83,12 @@ const openSource = computed(() => {
     },
     {
       icon: UserProfile,
-      count: home.opensource.contributors,
+      count: home.opensource.dev,
       desc: 'Contributors'
     },
     {
       icon: Package,
-      count: home.opensource.repositories,
+      count: home.opensource.repo,
       desc: 'Repositories'
     },
     {
@@ -98,7 +98,7 @@ const openSource = computed(() => {
     },
     {
       icon: UsersProfiles,
-      count: home.opensource.teams,
+      count: home.opensource.team,
       desc: 'Teams'
     }
   ]

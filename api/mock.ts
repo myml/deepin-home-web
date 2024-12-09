@@ -21,12 +21,13 @@ export class mockAPI implements API {
   async getOpenSource() {
     await this.delay()
     return {
-      pull_request: 110941,
-      commits: 2060,
-      contributors: 11686,
-      repositories: 24830,
-      issues: 9061,
-      teams: 61
+      commits: 112349,
+      dev: 2067,
+      issues: 11706,
+      pull_request: 25557,
+      repo: 9133,
+      team: 61,
+      user: 160456
     }
   }
   async delay() {

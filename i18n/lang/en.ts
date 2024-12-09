@@ -1,5 +1,6 @@
 export default {
   tips: {
+    reason: 'Reasons to choose deepin', // 选择deepin的理由
     productivity: 'Productivity Makes Life Better', // 生产力让生活更美好
     community: 'Community Dynamics', // 社区动态
     openSource: 'Open Source Community', // 开源社区

@@ -1,15 +1,13 @@
 <template>
-  <div class="w-full bg-[--website-layer-footer]">
+  <div class="w-full bg-[--website-layer-footer] mt-36">
     <div
-      class="max-w-5xl h-full mx-auto py-10 flex flex-col text-xs whitespace-nowrap font-semibold text-[--website-font-secondary]"
-    >
+      class="max-w-5xl h-full mx-auto py-10 flex flex-col text-xs whitespace-nowrap font-semibold text-[--website-font-secondary]">
       <div class="flex justify-between flex-1">
         <div class="flex gap-14">
           <div
             v-for="(nav, index) in setting.navs"
             :key="index"
-            class="flex flex-col"
-          >
+            class="flex flex-col">
             <span class="text-base text-[--website-font-primary]">
               {{ nav.title }}
             </span>
@@ -31,19 +29,18 @@
               <template #reference>
                 <div
                   :class="{ 'mt-10': index === 0 }"
-                  class="mb-3 cursor-pointer"
-                >
+                  class="mb-3 cursor-pointer">
                   {{ qr.text }}
                 </div>
               </template>
               <template #default>
-                <img :src="qr.img" alt="" class="w-full h-full" >
+                <img :src="qr.img" alt="" class="w-full h-full" />
               </template>
             </el-popover>
           </template>
         </div>
       </div>
-      <hr class="my-3 border-[#F0F0F0]" >
+      <hr class="my-3 border-[#F0F0F0]" />
       <div class="text-center">
         <div>Made with Love by deepin Web SIG.</div>
         <div class="mt-3">

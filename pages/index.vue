@@ -8,16 +8,16 @@
     <!-- 选择deepin的理由 -->
     <homeReason :reason="home.config.reason" />
 
-    <div class="max-w-5xl mx-auto my-5">
+    <div class="max-w-5xl mx-auto mt-16 mb-5">
       <homeOffice :setting="home.config.feature" />
     </div>
 
-    <div class="max-w-5xl mx-auto my-5">
+    <div class="max-w-5xl mx-auto mt-16 mb-5">
       <homeApps :setting="home.config.apps" />
     </div>
 
     <!--  社区动态  -->
-    <div class="max-w-5xl mx-auto my-5">
+    <div class="max-w-5xl mx-auto mt-16 mb-5">
       <div class="text-3xl font-semibold">
         <span v-html="highlightDeepin(t('tips.community'))" />
       </div>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <!-- 开源社区 -->
-    <div class="max-w-5xl mx-auto my-5 text-[--website-font-primary]">
+    <div class="max-w-5xl mx-auto mt-16 mb-5 text-[--website-font-primary]">
       <homeOpenSource />
     </div>
     <mFooter :setting="home.config.footer" />
@@ -65,9 +65,9 @@ const { t } = useI18n()
 const { home, getHome, news, loadNews } = useHomeStore()
 
 const _result = await useAsyncData('home', () => {
+  loadNews()
   return getHome('zh_CN')
 })
-loadNews()
 
 function pushClick() {
   loadNews()

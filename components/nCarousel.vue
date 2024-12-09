@@ -12,31 +12,32 @@
       :key="index"
       :class="`class${index}`">
       <div class="w-full h-full overflow-hidden rounded-2xl">
-        <div class="w-full h-full relative">
+        <div class="w-full h-full relative font-semibold">
           <img
             :src="item.image"
             alt="carousel"
             class="fixed top-0 left-0 right-0 h-full object-fill rounded-2xl"
             @click="openUrl(item.image_link, index)" />
+          <span
+            v-if="item.title"
+            class="absolute left-[53px] top-[183px] text-3xl text-[--website-layer-card-background]"
+            >{{ item.title }}</span
+          >
+          <span
+            v-if="item.content"
+            class="absolute left-[53px] top-[237px] text-xl text-[--website-layer-card-background] max-w-[370px]"
+            style="min-width: 200px">
+            {{ item.content }}
+          </span>
           <div
-            class="fixed flex justify-between flex-col top-1/3 left-20 bottom-1/3">
-            <span v-if="item.title" class="text-3xl">{{ item.title }}</span>
-            <span
-              v-if="item.content"
-              class="text-xl text-[#606262]"
-              style="min-width: 200px">
-              {{ item.content }}
-            </span>
-            <div>
-              <el-button
-                v-for="(link, linkIndex) in item.links"
-                :key="linkIndex"
-                type="primary"
-                size="large"
-                class="mr-2"
-                @click="openUrl(link.url)">
-                {{ link.title }}
-              </el-button>
+            v-if="item.links.length"
+            class="absolute left-[53px] bottom-[33px] flex gap-2">
+            <div
+              v-for="(link, linkIndex) in item.links"
+              :key="linkIndex"
+              class="px-[22px] py-3 text-lg text-[--website-font-primary] border border-[--website-tag-border] bg-[--website-layer-card-background] rounded-[39px]"
+              @click="openUrl(link.url)">
+              {{ link.title }}
             </div>
           </div>
         </div>

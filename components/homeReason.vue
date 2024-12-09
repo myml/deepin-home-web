@@ -1,55 +1,156 @@
 <template>
-  <div class="max-w-5xl mx-auto my-5">
+  <div class="max-w-5xl mx-auto mt-36 mb-5">
     <div class="text-3xl font-semibold">
-      <span v-html="highlightDeepin(reason.title)"/>
+      <span v-html="highlightDeepin(t('tips.reason'))" />
     </div>
     <div class="grid grid-cols-3 gap-5 mt-5">
-      <div
-        v-for="(item, index) in reason.cards"
-        :key="index"
-        class="h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]"
-        :class="{
-          'col-span-2': index === reason.cards.length - 1,
-          'p-5': index !== reason.cards.length - 1
-        }"
-      >
-        <div v-if="index !== reason.cards.length - 1" class="w-full flex-auto">
-          <span class="text-2xl">{{ item.title }}</span>
+      <template v-if="reason.cards.length">
+        <div
+          class="flex flex-col p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
+          <span class="text-2xl">{{ reason.cards[0].title }}</span>
           <p class="text-[--website-font-secondary] mt-[7px]">
-            {{ item.content }}
+            {{ reason.cards[0].content }}
           </p>
-          <div class="size-72"/>
+          <div class="relative flex-1 flex items-center justify-center">
+            <div
+              class="absolute top-[42px] left-[27px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              <img
+                src="~/assets/icons/package.svg"
+                alt="package"
+                class="w-4 h-4" />
+            </div>
+            <div
+              class="absolute top-[32px] right-[33px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              <img
+                src="~/assets/icons/package.svg"
+                alt="package"
+                class="w-4 h-4" />
+            </div>
+            <div
+              class="absolute top-[52px] right-[91px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              <img
+                src="~/assets/icons/package.svg"
+                alt="package"
+                class="w-4 h-4" />
+            </div>
+            <div
+              class="install-btn flex items-center justify-center gap-1 w-[176px] h-[49px] px-[39px] py-3 text-xs rounded-[10px] border border-[--website-tag-active-border] font-semibold text-[--website-tag-active-border]">
+              <span class="text-2xl">⚡</span><span>一键安装</span>
+            </div>
+            <div
+              class="absolute top-[165px] left-[11px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              <img
+                src="~/assets/icons/package.svg"
+                alt="package"
+                class="w-4 h-4" />
+            </div>
+            <div
+              class="absolute top-[196px] left-[75px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              <img
+                src="~/assets/icons/package.svg"
+                alt="package"
+                class="w-4 h-4" />
+            </div>
+            <div
+              class="absolute top-[178px] right-[34px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              <img
+                src="~/assets/icons/package.svg"
+                alt="package"
+                class="w-4 h-4" />
+            </div>
+          </div>
         </div>
-        <div v-else ref="codeOpenSource" class="w-full flex-auto pt-6">
-          <span class="text-2xl mx-6">{{ item.title }}</span>
-          <p
+        <div
+          class="relative flex flex-col p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
+          <span class="text-2xl z-10">{{ reason.cards[1].title }}</span>
+          <p class="text-[--website-font-secondary] text-base mt-[7px] z-10">
+            {{ reason.cards[1].content }}
+          </p>
+          <div class="flex-1 relative">
+            <img
+              :src="isDark ? ShieldDark : Shield"
+              alt="shield"
+              class="absolute top-[-25px] left-[42px] w-[194px] h-[257px] z-0" />
+          </div>
+        </div>
+
+        <div
+          class="w-full flex-auto p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
+          <span class="text-2xl">{{ reason.cards[2].title }}</span>
+          <p class="text-[--website-font-secondary] mt-[7px]">
+            {{ reason.cards[2].content }}
+          </p>
+          <div class="h-full" />
+        </div>
+        <div
+          class="flex flex-col p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
+          <span class="text-2xl">{{ reason.cards[3].title }}</span>
+          <p class="text-[--website-font-secondary] text-base mt-[7px]">
+            {{ reason.cards[3].content }}
+          </p>
+          <div class="flex-1 relative">
+            <img
+              class="absolute top-[34px] left-[3px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/QQ.png"
+              alt="QQ" />
+            <img
+              class="absolute top-[139px] left-[3px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/dingding.png"
+              alt="DingDing" />
+            <img
+              class="absolute top-[7px] left-[86px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/chrome.png"
+              alt="Chrome" />
+            <img
+              class="absolute top-[37px] left-[169px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/firefox.png"
+              alt="Firefox" />
+            <img
+              class="absolute top-[104px] right-0 h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/txvideo.png"
+              alt="腾讯视频" />
+            <img
+              class="absolute top-[109px] left-[94px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/edge.png"
+              alt="edge" />
+            <img
+              class="absolute bottom-0 left-[79px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/wechat.png"
+              alt="微信" />
+            <img
+              class="absolute bottom-[15px] right-[50px] h-[58px] w-[58px] rounded-xl border border-[--website-image-border]"
+              src="~/assets/apps/steam.png"
+              alt="steam" />
+          </div>
+        </div>
+        <div
+          ref="codeOpenSource"
+          class="w-full flex-auto pt-6 col-span-2 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
+          <span class="text-2xl mx-6">{{ reason.cards[4].title }}</span>
+          <div
             class="text-[--website-font-secondary] mx-6 mt-[7px]"
-            v-html="item.content"
-          />
+            v-html="reason.cards[4].content"></div>
           <div class="w-full h-[260px] mt-[11px]">
             <div
               v-for="(row, _repoIndex) in repos"
               :key="_repoIndex"
-              class="w-full h-[35px] mt-[10px] text-sm text-nowrap font-normal relative overflow-hidden"
-            >
+              class="w-full h-[35px] mt-[10px] text-sm text-nowrap font-normal relative overflow-hidden">
               <div
                 class="flex flex-nowrap gap-[6px] absolute"
                 :style="{
                   transform: `translateX(${codeOpenSourceTranslateX}px)`
-                }"
-              >
+                }">
                 <div
                   v-for="(repo, repoIndex) in row"
                   :key="repoIndex"
-                  class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]"
-                >
+                  class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]">
                   <span>{{ repo.title }}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
@@ -57,8 +158,13 @@
 <script setup lang="ts">
 import { highlightDeepin } from '@/utils/format'
 import { ref } from 'vue'
-import { useIntersectionObserver } from '@vueuse/core'
+import { useIntersectionObserver, usePreferredDark } from '@vueuse/core'
 import type { Reason } from '@/api/model'
+import Shield from '~/assets/imgs/shield.svg'
+import ShieldDark from '~/assets/imgs/shield-dark.svg'
+
+const { t } = useI18n()
+const isDark = usePreferredDark()
 
 const { reason } = defineProps<{
   reason: Reason
@@ -133,3 +239,12 @@ const calculateRepos = (
 }
 calculateRepos(reason.cards[reason.cards.length - 1].repos)
 </script>
+
+<style lang="scss" scoped>
+.install-btn {
+  background: linear-gradient(0deg, #eef9ff 0%, #fff 100%);
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(0deg, #102f3f 0%, #393939 100%);
+  }
+}
+</style>

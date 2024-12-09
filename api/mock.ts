@@ -43,28 +43,24 @@ const homeConfigMockData = {
         title: 'deepin v23',
         content: '深度科技发布deepin v23，全新设计，全新体验。',
         image:
-          'https://storage.deepin.org/thread/202309191045559300_%E5%AE%98%E7%BD%911.png',
+          'https://www.deepin.org/wp-content/uploads/2024/08/23-旧.jpg',
         image_link: 'https://www.deepin.org/zh/download',
         interval: 3000,
         online_time: '2024-12-04T02:35:03.000Z',
         downline_time: '2024-12-05T16:00:00.000Z"',
         links: [
           {
-            title: '下载',
+            title: '详情了解与下载',
             url: 'https://www.deepin.org/zh/download'
           },
-          {
-            title: '了解更多',
-            url: 'https://www.deepin.org/zh/download'
-          }
         ]
       },
       {
         title: '',
         content: '',
         image:
-          'https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg',
-        image_link: 'https://www.deepin.org/zh/download',
+          'https://www.deepin.org/wp-content/uploads/2024/08/202404090626283228_Banner-1920×780-社区-首页轮播图.jpg',
+        image_link: 'https://www.deepin.org/zh/deepin-campus-alliance/',
         interval: 5000,
         online_time: '2024-12-04T02:35:03.000Z',
         downline_time: '2024-12-05T16:00:00.000Z',
@@ -74,8 +70,8 @@ const homeConfigMockData = {
         title: '',
         content: '',
         image:
-          'https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg',
-        image_link: 'https://www.deepin.org/zh/download',
+          'https://storage.deepin.org/thread/202411211056478081_%E5%80%A1%E8%AE%AE%E4%B9%A61920x780.jpg',
+        image_link: 'https://www.deepin.org/zh/open-source-community-partnership-initiative/',
         interval: 3000,
         online_time: '2024-12-04T02:35:03.000Z',
         downline_time: '2024-12-05T16:00:00.000Z',
@@ -102,14 +98,14 @@ const homeConfigMockData = {
           '我们和用户有着紧密的联系，您可以通过微信、论坛、GitHub、Telegram、Twitter 向我们反馈问题。'
       },
       {
-        title: '开箱即用',
+        title: '生态完善',
         content:
           '我们不仅自研一系列基础办公软件，而且兼容大部分安卓和Windows软件，有40000+款软件供您选择。'
       },
       {
         title: '代码开源',
         content:
-          '我们遵循开源软件许可证协议发布源代码，相关项目和源代码均可在 GitHub 上进行查看。',
+          "我们遵循开源软件许可证协议发布源代码，相关项目和源代码均可在 <a href='https://github.com/linuxdeepin' target='_blank' class='underline'>GitHub</a> 上进行查看。",
         repos: [
 
           {

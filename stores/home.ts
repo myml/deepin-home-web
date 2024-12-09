@@ -13,18 +13,13 @@ export const useHomeStore = defineStore('Home', () => {
     data: [],
     loading: false
   })
-  let newsPage = 0
-  const loadNews = async () => {
-    newsPage++
-    news.loading = true
-    const data = await api.loadNews(newsPage)
-    news.data.push(...data)
-    news.loading = false
+  const getNews = async (lang: string) => {
+    news.data = await api.getCommunityDynamic(lang)
   }
   return {
     home,
     getHome,
     news,
-    loadNews
+    getNews
   }
 })

@@ -16,9 +16,9 @@ export class API {
       .get<OpenSource>('/api/v1/public/opensource')
       .then(resp => resp.data)
   }
-  async loadNews(page: number) {
+  async getCommunityDynamic(lang: string) {
     return request
-      .get<News[]>('/api/v1/public/news', { params: { page } })
+      .get<News[]>(`https://www.deepin.org/${lang}/wp-json/wp/v2/posts`)
       .then(resp => resp.data)
   }
 }

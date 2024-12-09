@@ -42,10 +42,28 @@ export interface Reason {
 }
 
 export interface News {
-  image: string
-  title: string
-  content: string
-  time: string
+  id: number;
+  date: string;
+  date_gmt: string;
+  guid: {
+    rendered: string;
+  };
+  modified: string;
+  modified_gmt: string;
+  status: string;
+  type: string;
+  link: string;
+  title: {
+    rendered: string;
+  };
+  content: {
+    rendered: string;
+    protected: boolean;
+  };
+  excerpt: {
+    rendered: string;
+    protected: boolean;
+  }
 }
 
 export interface OpenSource {

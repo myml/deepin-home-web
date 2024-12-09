@@ -24,18 +24,22 @@
       <div
         v-for="(item, index) in news.data"
         :key="index"
-        class="bg-[--website-layer-card-background] rounded-xl my-5 flex overflow-hidden border border-[--website-layer-card-border]">
-        <div
-          :style="{ background: `url(${item.image})  no-repeat` }"
-          class="w-1/4 h-32" />
-        <div class="w-full flex-col flex p-2.5">
-          <div class="text-base font-semibold">{{ item.title }}</div>
-          <p class="text-[--website-font-secondary] mt-3.5 text-xs">
-            {{ item.content }}
-          </p>
-          <div class="text-[--website-font-secondary] mt-3.5 text-xs">
-            {{ item.time }}
-          </div>
+        class="h-[189px] bg-[--website-layer-card-background] rounded-xl my-5 flex items-center overflow-hidden border border-[--website-layer-card-border]">
+        <img
+          :src="parseImgUrl(item.content.rendered)"
+          class="w-[316px] h-full cursor-pointer"
+          @click="openUrl(item.link)" />
+        <div class="w-full flex-col flex p-2.5 overflow-hidden font-semibold">
+          <div
+            class="text-xl text-ellipsis overflow-hidden whitespace-nowrap cursor-pointer"
+            @click="openUrl(item.link)"
+            v-html="item.title.rendered"></div>
+          <div
+            class="text-[--website-font-secondary] mt-3.5 text-sm"
+            v-html="item.excerpt.rendered"></div>
+          <div
+            class="text-[--website-font-third] mt-3.5 text-xs"
+            v-html="formatDate(item.date)"></div>
         </div>
       </div>
       <div v-if="news.loading" class="flex items-center justify-center">
@@ -44,7 +48,7 @@
       <div class="flex items-center justify-center">
         <button
           class="w-36 h-12 rounded-[39px] bg-[--website-layer-card-background] border border-[--website-layer-card-border]"
-          @click="pushClick">
+          @click="openUrl('https://www.deepin.org/zh/community-events/')">
           <span class="text-[--website-font-secondary] text-lg"
             >{{ t('tips.readMore') }} +</span
           >
@@ -60,16 +64,24 @@
 </template>
 
 <script setup lang="ts">
-import { highlightDeepin } from '~/utils/format'
+import { highlightDeepin, formatDate } from '~/utils/format'
 const { t } = useI18n()
-const { home, getHome, news, loadNews } = useHomeStore()
+const { home, getHome, news, getNews } = useHomeStore()
 
 const _result = await useAsyncData('home', () => {
-  loadNews()
+  getNews('zh')
   return getHome('zh_CN')
 })
 
-function pushClick() {
-  loadNews()
+// 提取图片url
+const parseImgUrl = (content: string) => {
+  const reg = /<img.*?src="(.*?)".*?>/g
+  const result = reg.exec(content)
+  console.log(result)
+  return result ? result[1] : ''
+}
+
+const openUrl = (url: string) => {
+  window.open(url)
 }
 </script>

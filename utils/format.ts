@@ -1,3 +1,4 @@
+import dayjs from "dayjs"
 /**
  * 高亮deepin
  * @param text
@@ -17,4 +18,13 @@ export function highlightDeepin(text: string) {
  */
 export function formatNumber(num: number) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+/**
+ * 格式化日期时间
+ * @param {string} date
+ * @returns {string}
+ */
+export function formatDate(date: string, format = 'YYYY-MM-DD HH:mm:ss') {
+  return dayjs(date).format(format)
 }

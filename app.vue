@@ -5,3 +5,10 @@
     </NuxtLayout>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { onMounted } from 'vue'
+onMounted(() => {
+  useLangStore().init()
+})
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-3xl font-semibold" v-html="setting.title" />
+  <div class="text-3xl font-semibold" v-html="t('tips.feature')" />
   <section class="grid grid-cols-4 gap-6 mt-5">
     <div
       v-for="(card, index) in setting.cards"
@@ -39,6 +39,7 @@
 <script setup lang="ts">
 import type { Feature } from '@/api/model'
 
+const { t } = useI18n()
 const { setting } = defineProps<{
   setting: Feature
 }>()

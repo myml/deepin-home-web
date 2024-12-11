@@ -5,6 +5,7 @@
     </div>
     <div class="grid grid-cols-3 gap-5 mt-5">
       <template v-if="reason.cards.length">
+        <!-- 开箱即用区域 -->
         <div
           class="flex flex-col p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
           <span class="text-2xl">{{ reason.cards[0].title }}</span>
@@ -60,6 +61,7 @@
             </div>
           </div>
         </div>
+        <!-- 尊重隐私区域 -->
         <div
           class="relative flex flex-col p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
           <span class="text-2xl z-10">{{ reason.cards[1].title }}</span>
@@ -73,15 +75,59 @@
               class="absolute top-[-25px] left-[42px] w-[194px] h-[257px] z-0" />
           </div>
         </div>
-
+        <!-- 社区强大区域 -->
         <div
-          class="w-full flex-auto p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
+          class="w-full flex flex-col flex-auto p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
           <span class="text-2xl">{{ reason.cards[2].title }}</span>
-          <p class="text-[--website-font-secondary] mt-[7px]">
+          <p class="text-[--website-font-secondary] mt-[7px] z-20">
             {{ reason.cards[2].content }}
           </p>
-          <div class="h-full" />
+          <div class="flex-1 relative z-10">
+            <div class="absolute top-[-16px]">
+              <div
+                class="w-[277px] h-[277px] z-20 relative border border-[--website-layer-card-border] rounded-full">
+                <div class="w-[233px] h-[233px] z-30 circle-container">
+                  <div class="w-[189px] h-[189px] z-40 circle-container">
+                    <div class="w-[145px] h-[145px] z-50 circle-container">
+                      <div class="wechat element">
+                        <img
+                          src="~/assets/apps/wechat.png"
+                          alt="wechat"
+                          class="rounded-full" />
+                      </div>
+                      <div class="element github">
+                        <img
+                          src="~/assets/apps/github.jpg"
+                          alt="github"
+                          class="rounded-full" />
+                      </div>
+                      <div class="element x">
+                        <img
+                          src="~/assets/apps/x.jpg"
+                          alt="x"
+                          class="rounded-full" />
+                      </div>
+                      <div class="element telegram">
+                        <img
+                          src="~/assets/apps/telegram.jpg"
+                          alt="telegram"
+                          class="rounded-full" />
+                      </div>
+                      <div class="w-[101px] h-[101px] circle-container">
+                        <div class="w-[57px] h-[57px] circle-container center">
+                          <img
+                            src="~/assets/icons/users-profiles.svg"
+                            alt="users-profiles" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- 生态完善区域 -->
         <div
           class="flex flex-col p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
           <span class="text-2xl">{{ reason.cards[3].title }}</span>
@@ -123,6 +169,7 @@
               alt="steam" />
           </div>
         </div>
+        <!-- 代码开源区域 -->
         <div
           ref="codeOpenSource"
           class="w-full flex-auto pt-6 col-span-2 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
@@ -245,6 +292,106 @@ calculateRepos(reason.cards[reason.cards.length - 1].repos)
   background: linear-gradient(0deg, #eef9ff 0%, #fff 100%);
   @media (prefers-color-scheme: dark) {
     background: linear-gradient(0deg, #102f3f 0%, #393939 100%);
+  }
+}
+
+.circle-container {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  border: 1px solid var(--website-layer-card-border);
+  border-radius: 50%;
+
+  .center {
+    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.element {
+  position: absolute;
+
+  top: calc(50% - 17px);
+  left: calc(50% - 17px);
+  width: 34px;
+  height: 34px;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 50%;
+  border: 1px solid #f1f1f1;
+
+  img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+  }
+}
+
+.wechat {
+  animation: wechat 5.5s forwards infinite;
+
+  animation-timing-function: linear;
+}
+
+.github {
+  animation: github 5.5s forwards infinite;
+
+  animation-timing-function: linear;
+}
+
+.x {
+  animation: x 5.6s forwards infinite;
+
+  animation-timing-function: linear;
+  z-index: 30;
+}
+
+.telegram {
+  animation: telegram 5.6s forwards infinite;
+
+  animation-timing-function: linear;
+}
+
+@keyframes wechat {
+  from {
+    transform: rotate(40deg) translateX(52px) rotate(-40deg);
+  }
+  to {
+    transform: rotate(400deg) translateX(52px) rotate(-400deg);
+  }
+}
+
+@keyframes github {
+  from {
+    transform: rotate(225deg) translateX(52px) rotate(-225deg);
+  }
+  to {
+    transform: rotate(585deg) translateX(52px) rotate(-585deg);
+  }
+}
+
+@keyframes x {
+  from {
+    transform: rotate(135deg) translateX(105px) rotate(-135deg);
+  }
+  to {
+    transform: rotate(495deg) translateX(105px) rotate(-495deg);
+  }
+}
+
+@keyframes telegram {
+  from {
+    transform: rotate(-10deg) translateX(105px) rotate(10deg);
+  }
+  to {
+    transform: rotate(350deg) translateX(105px) rotate(-350deg);
   }
 }
 </style>

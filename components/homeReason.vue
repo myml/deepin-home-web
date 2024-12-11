@@ -82,7 +82,7 @@
           <p class="text-[--website-font-secondary] mt-[7px] z-20">
             {{ reason.cards[2].content }}
           </p>
-          <div class="flex-1 relative z-10">
+          <div class="flex-1 relative z-10 communication">
             <div class="absolute top-[-16px]">
               <div
                 class="w-[277px] h-[277px] z-20 relative border border-[--website-layer-card-border] rounded-full">
@@ -177,7 +177,10 @@
           <div
             class="text-[--website-font-secondary] mx-6 mt-[7px]"
             v-html="reason.cards[4].content"></div>
-          <div class="w-full h-[260px] mt-[11px]">
+          <div
+            class="w-full h-[260px] mt-[11px]"
+            @mouseenter="codeOpenSourceMouseEnter = true"
+            @mouseleave="codeOpenSourceMouseEnter = false">
             <div
               v-for="(row, _repoIndex) in repos"
               :key="_repoIndex"
@@ -222,18 +225,19 @@ const repos = ref<{ title: string; link: string }[][]>([])
 const reposCopy = ref<{ title: string; link: string }[][]>([])
 // 检测代码开源区域的可见性，动态的滚动和停止滚动
 const codeOpenSource = ref(null)
-const codeOpenSourceVisible = ref(false)
 const codeOpenSourceTranslateX = ref(0)
 // 滚动定时器
 let codeOpenSourceTimer: ReturnType<typeof setTimeout> | null = null
+// 鼠标是否进入代码开源区域
+const codeOpenSourceMouseEnter = ref(false)
 
 useIntersectionObserver(codeOpenSource, ([entry]) => {
   if (entry.isIntersecting) {
-    codeOpenSourceVisible.value = true
     if (codeOpenSourceTimer) {
       clearInterval(codeOpenSourceTimer)
     }
     codeOpenSourceTimer = setInterval(() => {
+      if (codeOpenSourceMouseEnter.value) return
       codeOpenSourceTranslateX.value -= 1
       if (repos.value.length <= 0) {
         return
@@ -247,7 +251,6 @@ useIntersectionObserver(codeOpenSource, ([entry]) => {
       }
     }, 50)
   } else {
-    codeOpenSourceVisible.value = false
     if (codeOpenSourceTimer) {
       clearInterval(codeOpenSourceTimer)
     }
@@ -295,6 +298,15 @@ calculateRepos(reason.cards[reason.cards.length - 1].repos)
   }
 }
 
+.communication {
+  /** 鼠标hover时停止旋转 **/
+  &:hover {
+    .element {
+      animation-play-state: paused;
+    }
+  }
+}
+
 .circle-container {
   position: absolute;
   top: 22px;
@@ -331,30 +343,31 @@ calculateRepos(reason.cards[reason.cards.length - 1].repos)
     width: 34px;
     height: 34px;
     border-radius: 50%;
+    cursor: pointer;
   }
 }
 
 .wechat {
-  animation: wechat 5.5s forwards infinite;
+  animation: wechat 11s forwards infinite;
 
   animation-timing-function: linear;
 }
 
 .github {
-  animation: github 5.5s forwards infinite;
+  animation: github 11s forwards infinite;
 
   animation-timing-function: linear;
 }
 
 .x {
-  animation: x 5.6s forwards infinite;
+  animation: x 11.5s forwards infinite;
 
   animation-timing-function: linear;
   z-index: 30;
 }
 
 .telegram {
-  animation: telegram 5.6s forwards infinite;
+  animation: telegram 11.5s forwards infinite;
 
   animation-timing-function: linear;
 }

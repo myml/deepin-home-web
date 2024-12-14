@@ -14,21 +14,21 @@
           </p>
           <div class="relative flex-1 flex items-center justify-center">
             <div
-              class="absolute top-[42px] left-[27px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              class="absolute top-[42px] left-[27px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-layer-card-border]">
               <img
                 src="~/assets/icons/package.svg"
                 alt="package"
                 class="w-4 h-4" />
             </div>
             <div
-              class="absolute top-[32px] right-[33px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              class="absolute top-[32px] right-[33px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-layer-card-border]">
               <img
                 src="~/assets/icons/package.svg"
                 alt="package"
                 class="w-4 h-4" />
             </div>
             <div
-              class="absolute top-[52px] right-[91px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              class="absolute top-[52px] right-[91px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-layer-card-border]">
               <img
                 src="~/assets/icons/package.svg"
                 alt="package"
@@ -39,21 +39,21 @@
               <span class="text-2xl">⚡</span><span>一键安装</span>
             </div>
             <div
-              class="absolute top-[165px] left-[11px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              class="absolute top-[165px] left-[11px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-layer-card-border]">
               <img
                 src="~/assets/icons/package.svg"
                 alt="package"
                 class="w-4 h-4" />
             </div>
             <div
-              class="absolute top-[196px] left-[75px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              class="absolute top-[196px] left-[75px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-layer-card-border]">
               <img
                 src="~/assets/icons/package.svg"
                 alt="package"
                 class="w-4 h-4" />
             </div>
             <div
-              class="absolute top-[178px] right-[34px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
+              class="absolute top-[178px] right-[34px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-layer-card-border]">
               <img
                 src="~/assets/icons/package.svg"
                 alt="package"
@@ -193,7 +193,7 @@
                 <div
                   v-for="(repo, repoIndex) in row"
                   :key="repoIndex"
-                  class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]">
+                  class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] transition duration-200 hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]">
                   <span>{{ repo.title }}</span>
                 </div>
               </div>

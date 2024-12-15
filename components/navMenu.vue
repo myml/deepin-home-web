@@ -20,7 +20,7 @@ import { usePreferredDark } from '@vueuse/core'
 const isDark = usePreferredDark()
 const langStore = useLangStore()
 const menu = computed(() => {
-  const menu = langStore.language === 'zh_CN' ? MenuZh.menu : MenuEn.menu
+  const menu = langStore.language === 'zh' ? MenuZh.menu : MenuEn.menu
   return menu as Menu[]
 })
 </script>

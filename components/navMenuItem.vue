@@ -43,14 +43,14 @@
       <div ref="dropdown" class="dropdown">
         <div class="dropdown-wrap">
           <div class="dropdown-menu">
-            <span @click="changeLang('zh_CN')">{{
-              langStore.language === 'zh_CN' ? '中文' : 'Chinese'
+            <span @click="changeLang('zh')">{{
+              langStore.language === 'zh' ? '中文' : 'Chinese'
             }}</span>
-            <span v-if="langStore.language === 'zh_CN'">🇨🇳</span>
+            <span v-if="langStore.language === 'zh'">🇨🇳</span>
           </div>
           <div class="dropdown-menu">
             <span @click="changeLang('en')">{{
-              langStore.language === 'zh_CN' ? '英文' : 'English'
+              langStore.language === 'zh' ? '英文' : 'English'
             }}</span>
             <span v-if="langStore.language === 'en'">🇺🇸</span>
           </div>

@@ -36,6 +36,25 @@ export class mockAPI implements API {
 }
 
 const homeConfigMockData = {
+  seo: {
+    title: 'deepin  - 基于Linux的开源国产操作系统',
+    lang: 'zh',
+    description:
+      '作为国内知名开源操作系统团队，deepin以提供安全可靠、美观易用的国产操作系统与开源解决方案为目标，满足全球用户不同的应用场景，给用户提供一种更好的选择。',
+    keywords: [
+      'deepin',
+      'Linux',
+      '电脑系统',
+      '操作系统',
+      '国产操作系统',
+      '电脑操作系统',
+      '国产系统',
+      'Linux发行版',
+      '开源软件',
+      '开源社区',
+      '开源中国',
+    ],
+  },
   carousel: {
     interval: 3000,
     cards: [

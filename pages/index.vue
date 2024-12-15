@@ -68,9 +68,8 @@ import { highlightDeepin, formatDate } from '~/utils/format'
 const { t } = useI18n()
 const { home, getHome, news, getNews } = useHomeStore()
 
-const _result = await useAsyncData('home', () => {
-  getNews('zh')
-  return getHome('zh_CN')
+const _result = await useAsyncData('home', async () => {
+  return Promise.all([getHome('zh'), getNews('zh')])
 })
 
 // 提取图片url

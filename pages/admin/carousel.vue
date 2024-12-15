@@ -1,90 +1,56 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane ref="elTabPaneRef" label="中文" name="chinese">
+    <el-tab-pane
+      ref="elTabPaneRef"
+      v-loading="loading"
+      class="min-h-[80vh] py-4"
+      label="中文"
+      name="zh">
       <admin-carouselCard
+        v-if="carouselList.cards"
         v-model:cards="carouselList.cards"
-        @save="saveCarousel"
-      />
+        @save="saveCarousel" />
     </el-tab-pane>
-    <el-tab-pane label="英文" name="english">
+    <el-tab-pane
+      v-loading="loading"
+      label="英文"
+      class="min-h-[80vh] py-4"
+      name="en">
       <admin-carouselCard
+        v-if="carouselList.cards"
         v-model:cards="carouselList.cards"
-        @save="saveCarousel"
-      />
+        @save="saveCarousel" />
     </el-tab-pane>
   </el-tabs>
 </template>
 
 <script lang="ts" setup>
-import type { Carousel } from '@/api/model';
-import { ref } from 'vue';
-import { ElMessage, type TabsPaneContext } from 'element-plus';
+import type { Carousel } from '@/api/model'
+import { ref } from 'vue'
+import { ElMessage, type TabsPaneContext } from 'element-plus'
 
-if (!localStorage.getItem('carousel')) {
-  localStorage.setItem(
-    'carousel',
-    JSON.stringify({
-      cards: [
-        {
-          title: 'deepin v23',
-          content: '深度科技发布deepin v23，全新设计，全新体验。',
-          image:
-            'https://storage.deepin.org/thread/202309191045559300_%E5%AE%98%E7%BD%911.png',
-          image_link: 'https://www.deepin.org/zh/download',
-          interval: 3000,
-          online_time: '2023-09-19',
-          downline_time: '2023-09-19',
-          links: [
-            {
-              title: '下载',
-              url: 'https://www.deepin.org/zh/download',
-            },
-            {
-              title: '了解更多',
-              url: 'https://www.deepin.org/zh/download',
-            },
-          ],
-        },
-        {
-          title: '',
-          content: '',
-          image:
-            'https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg',
-          image_link: 'https://www.deepin.org/zh/download',
-          interval: 5000,
-          online_time: '2023-09-19',
-          downline_time: '2023-09-19',
-          links: [],
-        },
-        {
-          title: '',
-          content: '',
-          image:
-            'https://www.deepin.org/wp-content/uploads/2023/09/banner-拷贝3.jpg',
-          image_link: 'https://www.deepin.org/zh/download',
-          interval: 3000,
-          online_time: '2024-12-19 18:00:00',
-          downline_time: '2024-1-19 18:00:00',
-          links: [],
-        },
-      ],
-    })
-  );
+const adminStore = useAdminStore()
+const asyncData = async () => {
+  loading.value = true
+  await adminStore.getAdmin(activeName.value)
+  if (adminStore.admin.homeConfig) {
+    carouselList.value = adminStore.admin.homeConfig?.carousel
+    loading.value = false
+  }
 }
-
-// 从浏览器本地存储获取数据
-const carouselList = ref<Carousel>(
-  JSON.parse(localStorage.getItem('carousel') || '{}')
-);
-const activeName = ref('chinese');
-const elTabPaneRef = ref<HTMLElement>();
+const loading = ref(false)
+const carouselList = ref<Carousel>({} as Carousel)
+const activeName = ref('zh')
+const elTabPaneRef = ref<HTMLElement>()
+asyncData()
 
 const saveCarousel = () => {
-  ElMessage.success('保存配置成功');
-  localStorage.setItem('carousel', JSON.stringify(carouselList.value));
-};
+  adminStore.setHomeConfig(activeName.value, 'carousel', carouselList.value)
+  ElMessage.success('保存配置成功')
+}
 
 const handleClick = (tab: TabsPaneContext) => {
-  activeName.value = tab.props.label;
-};
+  activeName.value = tab.props.name as string
+  asyncData()
+}
 </script>

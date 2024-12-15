@@ -11,24 +11,19 @@
         <el-input
           v-model="card.title"
           class="max-w-52"
-          placeholder="请输入标题"
-        />
+          placeholder="请输入标题" />
         <div class="text-[#606262] px-3">描述</div>
-        <el-input v-model="card.content" placeholder="请输入描述"/>
+        <el-input v-model="card.content" placeholder="请输入描述" />
       </div>
       <el-form-item
         label="图片地址"
         :rules="[
           { required: true, message: '请输入图片地址', trigger: 'blur' }
-        ]"
-      >
-        <el-input v-model="card.image" placeholder="请输入图片地址"/>
+        ]">
+        <el-input v-model="card.image" placeholder="请输入图片地址" />
       </el-form-item>
       <el-form-item label="图片超链接">
-        <el-input
-          v-model="card.image_link"
-          placeholder="请输入图片超链接"
-        />
+        <el-input v-model="card.image_link" placeholder="请输入图片超链接" />
       </el-form-item>
       <el-form-item label="轮播间隔（毫秒）"
         ><el-input v-model="card.interval" placeholder="请输入轮播间隔"
@@ -38,15 +33,13 @@
           <el-date-picker
             v-model="card.online_time"
             type="datetime"
-            placeholder="选择上线时间"
-          />
+            placeholder="选择上线时间" />
         </el-form-item>
         <el-form-item label="下线时间">
           <el-date-picker
             v-model="card.downline_time"
             type="datetime"
-            placeholder="选择下线时间"
-          />
+            placeholder="选择下线时间" />
         </el-form-item>
       </el-form-item>
       <div class="my-4 flex items-center">
@@ -60,15 +53,13 @@
             closable
             disable-transitions
             class="cursor-pointer"
-            @close="closeTag(cardIndex, tagIndex)"
-          >
+            @close="closeTag(cardIndex, tagIndex)">
             {{ tag.title }}
           </el-tag>
           <el-tag
             effect="plain"
             class="cursor-pointer"
-            @click="showAddTagDialog(cardIndex)"
-          >
+            @click="showAddTagDialog(cardIndex)">
             + 添加
           </el-tag>
         </div>
@@ -100,20 +91,13 @@
     v-model="addTagDialogVisible"
     title="添加按钮"
     width="500"
-    align-center
-  >
+    align-center>
     <el-form v-model="addTagForm" label-width="100">
       <el-form-item label="按钮文本">
-        <el-input
-          v-model="addTagForm.title"
-          placeholder="请输入按钮文本"
-        />
+        <el-input v-model="addTagForm.title" placeholder="请输入按钮文本" />
       </el-form-item>
       <el-form-item label="按钮超链接">
-        <el-input
-          v-model="addTagForm.url"
-          placeholder="请输入按钮超链接"
-        />
+        <el-input v-model="addTagForm.url" placeholder="请输入按钮超链接" />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -130,6 +114,7 @@ import { ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import type { CarouselCard } from '@/api/model'
 const cards = defineModel<CarouselCard[]>('cards', { required: true })
+
 const emits = defineEmits<{
   save: []
 }>()

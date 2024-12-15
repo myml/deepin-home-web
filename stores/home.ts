@@ -1,4 +1,4 @@
-import type { HomeConfig, OpenSource, News } from './../api/model';
+import type { HomeConfig, OpenSource, News } from '~/api/model';
 import { getAPI } from "~/api";
 
 export const useHomeStore = defineStore('Home', () => {

@@ -1,12 +1,12 @@
 import en from '~/i18n/lang/en'
-import zh_CN from '~/i18n/lang/zh_cn'
+import zh from '~/i18n/lang/zh'
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: 'zh_CN',
+  locale: 'zh',
   fallbackLocale: 'en',
   messages: {
     en,
-    zh_CN
+    zh
   }
 }))

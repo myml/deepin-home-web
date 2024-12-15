@@ -1,7 +1,11 @@
 <template>
   <div>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="中文" name="chinese">
+    <el-tabs v-model="activeName" class="p-3" @tab-click="handleClick">
+      <el-tab-pane
+        v-loading="loading"
+        class="min-h-[80vh] p-3"
+        label="中文"
+        name="zh">
         <el-form>
           <el-form-item label="标题">
             <el-input v-model="seo.title" placeholder="请输入标题" />
@@ -13,8 +17,7 @@
             <el-input
               v-model="seo.description"
               type="textarea"
-              placeholder="请输入描述"
-            />
+              placeholder="请输入描述" />
           </el-form-item>
           <el-form-item label="关键字">
             <div class="flex items-center gap-2 flex-wrap">
@@ -39,7 +42,11 @@
           </el-form-item>
         </el-form>
       </el-tab-pane>
-      <el-tab-pane label="英文" name="english">
+      <el-tab-pane
+        v-loading="loading"
+        class="min-h-[80vh] p-3"
+        label="英文"
+        name="en">
         <el-form>
           <el-form-item label="标题">
             <el-input v-model="seo.title" placeholder="请输入标题" />
@@ -51,8 +58,7 @@
             <el-input
               v-model="seo.description"
               type="textarea"
-              placeholder="请输入描述"
-            />
+              placeholder="请输入描述" />
           </el-form-item>
           <el-form-item label="关键字">
             <div class="flex items-center gap-2 flex-wrap">
@@ -83,8 +89,7 @@
       v-model="addKeywordDialogVisiable"
       title="添加按钮"
       width="500"
-      align-center
-    >
+      align-center>
       <el-form label-width="100">
         <el-form-item label="标签名称">
           <el-input v-model="addKeywordTitle" placeholder="请输入标签名称" />
@@ -100,60 +105,47 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { Seo } from '@/api/model';
-import { ref } from 'vue';
-import { ElMessage, type TabsPaneContext } from 'element-plus';
+import type { Seo } from '@/api/model'
+import { ref } from 'vue'
+import { ElMessage, type TabsPaneContext } from 'element-plus'
 
-if (!localStorage.getItem('seo')) {
-  localStorage.setItem(
-    'seo',
-    JSON.stringify({
-      title: 'deepin  - 基于Linux的开源国产操作系统',
-      lang: 'zh',
-      description:
-        '作为国内知名开源操作系统团队，deepin以提供安全可靠、美观易用的国产操作系统与开源解决方案为目标，满足全球用户不同的应用场景，给用户提供一种更好的选择。',
-      keywords: [
-        'deepin',
-        'Linux',
-        '电脑系统',
-        '操作系统',
-        '国产操作系统',
-        '电脑操作系统',
-        '国产系统',
-        'Linux发行版',
-        '开源软件',
-        '开源社区',
-        '开源中国',
-      ],
-    })
-  );
+const adminStore = useAdminStore()
+const asyncData = async () => {
+  loading.value = true
+  await adminStore.getAdmin(activeName.value)
+  if (adminStore.admin.homeConfig) {
+    seo.value = adminStore.admin.homeConfig?.seo
+    loading.value = false
+  }
 }
-
-const activeName = ref('chinese');
-const seo = ref<Seo>(JSON.parse(localStorage.getItem('seo') || '{}'));
-const addKeywordDialogVisiable = ref(false);
-const addKeywordTitle = ref('');
+const loading = ref(false)
+const activeName = ref('zh')
+const seo = ref<Seo>({} as Seo)
+const addKeywordDialogVisiable = ref(false)
+const addKeywordTitle = ref('')
+asyncData()
 
 const handleClick = (tab: TabsPaneContext) => {
-  activeName.value = tab.props.label;
-};
+  activeName.value = tab.props.name as string
+  asyncData()
+}
 
 const showAddKeywordDialog = () => {
-  addKeywordTitle.value = '';
-  addKeywordDialogVisiable.value = true;
-};
+  addKeywordTitle.value = ''
+  addKeywordDialogVisiable.value = true
+}
 
 const addKeyword = () => {
   if (addKeywordTitle.value.trim() === '') {
-    ElMessage.warning('标签名称不能为空');
-    return;
+    ElMessage.warning('标签名称不能为空')
+    return
   }
-  seo.value.keywords.push(addKeywordTitle.value);
-  addKeywordDialogVisiable.value = false;
-};
+  seo.value.keywords.push(addKeywordTitle.value)
+  addKeywordDialogVisiable.value = false
+}
 
 const saveSeo = () => {
-  localStorage.setItem('seo', JSON.stringify(seo.value));
-  ElMessage.success('保存成功');
-};
+  adminStore.setHomeConfig(activeName.value, 'seo', seo.value)
+  ElMessage.success('保存成功')
+}
 </script>

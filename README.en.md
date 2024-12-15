@@ -1,36 +1,84 @@
-# deepin home web
+# deepin community website
 
-#### Description
-deepin开源社区首页
+## Project Introduction
 
-#### Software Architecture
-Software architecture description
+This is the official website project of the deepin open-source community, developed and maintained by the SIG group. The project aims to provide a friendly platform for community users to communicate and share resources.
 
-#### Installation
+## Software Architecture
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+The project is built on the Nuxt.js framework and uses the following main tech stack:
 
-#### Instructions
+- Nuxt.js
+- Vue.js
+- Tailwind CSS
+- Element Plus
+- Swiper
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Installation
 
-#### Contribution
+Please ensure that the project dependencies are installed:
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+```bash
+# use npm
+npm install
 
+# use pnpm
+pnpm install
 
-#### Gitee Feature
+# use yarn
+yarn install
+```
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## Development Server
+
+Start the development server at <http://localhost:3000> ：
+
+```bash
+# use npm
+npm run dev
+
+# use pnpm
+pnpm dev
+
+# use yarn
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# use npm
+npm run build
+
+# use pnpm
+pnpm build
+
+# use yarn
+yarn build
+```
+
+Preview the production build locally:
+
+```bash
+# use npm
+npm run preview
+
+# use pnpm
+pnpm preview
+
+# use yarn
+yarn preview
+```
+
+For more information, please refer to the [deployment documentation](https://nuxt.com/docs/getting-started/deployment)。
+
+## Contribution Guide
+
+We welcome contributions of any kind! Please follow these steps:
+
+1. Fork this repository
+2. Create a new branch, e.g., feat_xxx
+3. Commit your code
+4. Create a Pull Request

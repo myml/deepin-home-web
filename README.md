@@ -1,75 +1,87 @@
-# Nuxt Minimal Starter
+# deepin 社区官网
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+[English Doc](./README.en.md)
 
-## Setup
+## 项目简介
 
-Make sure to install dependencies:
+这是 deepin 开源社区的官网项目，由 SIG 组开发和维护。该项目旨在为社区用户提供一个友好的交流和资源共享平台。
+
+## 软件架构
+
+该项目基于 Nuxt.js 框架构建，使用了以下主要技术栈：
+
+- Nuxt.js
+- Vue.js
+- Tailwind CSS
+- Element Plus
+
+## 安装
+
+请确保已安装项目依赖：
 
 ```bash
-# npm
+# 使用 npm
 npm install
 
-# pnpm
+# 使用 pnpm
 pnpm install
 
-# yarn
+# 使用 yarn
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## 开发服务器
 
-Start the development server on `http://localhost:3000`:
+在 <http://localhost:3000> 启动开发服务器：
 
 ```bash
-# npm
+# 使用 npm
 npm run dev
 
-# pnpm
+# 使用 pnpm
 pnpm dev
 
-# yarn
+# 使用 yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## 生产环境
 
-Build the application for production:
+构建生产环境应用：
 
 ```bash
-# npm
+# 使用 npm
 npm run build
 
-# pnpm
+# 使用 pnpm
 pnpm build
 
-# yarn
+# 使用 yarn
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+本地预览生产环境构建
 
 ```bash
-# npm
+# 使用 npm
 npm run preview
 
-# pnpm
+# 使用 pnpm
 pnpm preview
 
-# yarn
+# 使用 yarn
 yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+更多信息请查看 [部署文档](https://nuxt.com/docs/getting-started/deployment)。
+
+## 贡献指南
+
+欢迎任何形式的贡献！请按照以下步骤进行:
+
+1. Fork本仓库
+2. 创建新的分支，例如feat_xxx
+3. 提交代码
+4. 创建PullRequest
+
+感谢您的贡献！

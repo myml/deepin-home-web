@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-menu">
+  <div class="flex gap-6 text-sm font-semibold items-center">
     <NavMenuItem v-for="item in menu" :key="item.name" :menu="item" />
     <NavMenuItem
       :is-lang-switcher="true"
@@ -24,13 +24,3 @@ const menu = computed(() => {
   return menu as Menu[]
 })
 </script>
-
-<style lang="scss" scoped>
-.nav-menu {
-  display: flex;
-  gap: 24px;
-  font-size: 14px;
-  font-weight: 600;
-  align-items: center;
-}
-</style>

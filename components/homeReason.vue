@@ -194,7 +194,7 @@
                   v-for="(repo, repoIndex) in row"
                   :key="repoIndex"
                   class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]">
-                  <span>{{ repo.title }}</span>
+                  <span class="whitespace-nowrap">{{ repo.title }}</span>
                 </div>
               </div>
             </div>

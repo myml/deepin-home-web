@@ -114,7 +114,7 @@ const homeConfigMockData = {
       {
         title: '社区强大',
         content:
-          '我们和用户有着紧密的联系，您可以通过微信、论坛、GitHub、Telegram、Twitter 向我们反馈问题。'
+          '我们和用户有着紧密的联系，您可以通过<a class="underline" target="_blank" href="https://bbs.deepin.org/assets/contact/wx.png?_gl=1*6t5mdo*_ga*MjM4MjMxNjQ1LjE3MzMxMTQ3NjA.*_ga_QHZ7DPPD2D*MTczNDU3MDg2OS41NS4wLjE3MzQ1NzA4NjkuMC4wLjA.">微信</a>、<a class="underline" target="_blank" href="https://bbs.deepin.org">论坛</a>、<a class="underline" target="_blank" href="https://github.com/linuxdeepin">GitHub</a>、<a class="underline" target="_blank" href="https://t.me/deepin">Telegram</a>、<a class="underline" target="_blank" href="https://twitter.com/linux_deepin">Twitter</a> 向我们反馈问题。'
       },
       {
         title: '生态完善',

@@ -9,17 +9,11 @@
               <el-avatar
                 :size="32"
                 class="mr-3"
-                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-              />
-              <span class="text-large font-600 mr-3 text-nowrap"
-                >{{ route.name }}
-              </span>
-
+                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
               <el-alert
                 title="所有更改在点击底部保存按钮后才会生效！！！"
                 type="warning"
-                :closable="false"
-              />
+                :closable="false" />
             </div>
           </template>
           <template #extra>
@@ -35,7 +29,3 @@
     </el-container>
   </el-container>
 </template>
-
-<script lang="ts" setup>
-const route = useRoute();
-</script>

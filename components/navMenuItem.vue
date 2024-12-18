@@ -39,20 +39,16 @@
       </div>
     </template>
     <template v-else>
-      <img :src="langIcon || ''" />
+      <ClientOnly>
+        <img :src="langIcon || ''" />
+      </ClientOnly>
       <div ref="dropdown" class="dropdown">
         <div class="dropdown-wrap">
           <div class="dropdown-menu">
-            <span @click="changeLang('zh')">{{
-              langStore.language === 'zh' ? '中文' : 'Chinese'
-            }}</span>
-            <span v-if="langStore.language === 'zh'">🇨🇳</span>
+            <span @click="changeLang('zh')">中文（简体）</span>
           </div>
           <div class="dropdown-menu">
-            <span @click="changeLang('en')">{{
-              langStore.language === 'zh' ? '英文' : 'English'
-            }}</span>
-            <span v-if="langStore.language === 'en'">🇺🇸</span>
+            <span @click="changeLang('en')">English</span>
           </div>
         </div>
       </div>

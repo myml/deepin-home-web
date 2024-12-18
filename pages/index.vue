@@ -49,7 +49,7 @@
         <button
           class="w-36 h-12 rounded-[39px] bg-[--website-layer-card-background] border border-[--website-layer-card-border]"
           @click="openUrl('https://www.deepin.org/zh/community-events/')">
-          <span class="text-[--website-font-secondary] text-lg"
+          <span class="text-[--website-font-primary] text-lg font-semibold"
             >{{ t('tips.readMore') }} +</span
           >
         </button>

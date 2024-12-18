@@ -20,12 +20,12 @@
             @click="openUrl(item.image_link, index)" />
           <span
             v-if="item.title"
-            class="absolute left-[53px] top-[183px] text-3xl text-[--website-layer-card-background]"
+            class="absolute left-[53px] top-[183px] text-3xl text-white"
             >{{ item.title }}</span
           >
           <span
             v-if="item.content"
-            class="absolute left-[53px] top-[237px] text-xl text-[--website-layer-card-background] max-w-[370px]"
+            class="absolute left-[53px] top-[237px] text-xl text-white max-w-[370px]"
             style="min-width: 200px">
             {{ item.content }}
           </span>
@@ -35,9 +35,10 @@
             <div
               v-for="(link, linkIndex) in item.links"
               :key="linkIndex"
-              class="px-[22px] py-3 text-lg text-[--website-font-primary] border border-[--website-tag-border] bg-[--website-layer-card-background] rounded-[39px]"
+              class="flex items-center justify-center px-[22px] py-3 text-lg gap-1 text-black border border-[#e4e4e4] bg-white rounded-[39px]"
               @click="openUrl(link.url)">
-              {{ link.title }}
+              <img src="~/assets/icons/deepin.svg" alt="" class="w-5 h-5" />
+              <span>{{ link.title }}</span>
             </div>
           </div>
         </div>

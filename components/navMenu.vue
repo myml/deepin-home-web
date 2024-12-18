@@ -3,7 +3,7 @@
     <NavMenuItem v-for="item in menu" :key="item.name" :menu="item" />
     <NavMenuItem
       :is-lang-switcher="true"
-      :lang-icon="isDark ? GlobeDark : GlobeLight" />
+      :lang-icon="isDark ? GlobeDark : Globe" />
   </div>
 </template>
 
@@ -11,11 +11,11 @@
 import MenuZh from '@/assets/nav/menu_zh.json'
 import MenuEn from '@/assets/nav/menu_en.json'
 import NavMenuItem from './navMenuItem.vue'
-import GlobeLight from '~/assets/icons/globe-light.svg'
-import GlobeDark from '~/assets/icons/globe-dark.svg'
 import type { Menu } from './menu'
 import { computed } from 'vue'
 import { usePreferredDark } from '@vueuse/core'
+import Globe from '~/assets/icons/globe.svg'
+import GlobeDark from '~/assets/icons/globe-dark.svg'
 
 const isDark = usePreferredDark()
 const langStore = useLangStore()

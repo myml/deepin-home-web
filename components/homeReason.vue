@@ -15,49 +15,64 @@
           <div class="relative flex-1 flex items-center justify-center">
             <div
               class="absolute top-[42px] left-[27px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
-              <img
-                src="~/assets/icons/package.svg"
-                alt="package"
-                class="w-4 h-4" />
+              <ClientOnly>
+                <img
+                  :src="isDark ? PackageDark : Package"
+                  alt="package"
+                  class="w-4 h-4" />
+              </ClientOnly>
             </div>
             <div
               class="absolute top-[32px] right-[33px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
-              <img
-                src="~/assets/icons/package.svg"
-                alt="package"
-                class="w-4 h-4" />
+              <ClientOnly>
+                <img
+                  :src="isDark ? PackageDark : Package"
+                  alt="package"
+                  class="w-4 h-4" />
+              </ClientOnly>
             </div>
             <div
               class="absolute top-[52px] right-[91px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
-              <img
-                src="~/assets/icons/package.svg"
-                alt="package"
-                class="w-4 h-4" />
+              <ClientOnly>
+                <img
+                  :src="isDark ? PackageDark : Package"
+                  alt="package"
+                  class="w-4 h-4" />
+              </ClientOnly>
             </div>
             <div
-              class="install-btn flex items-center justify-center gap-1 w-[176px] h-[49px] px-[39px] py-3 text-xs rounded-[10px] border border-[--website-tag-active-border] font-semibold text-[--website-tag-active-border]">
-              <span class="text-2xl">⚡</span><span>一键安装</span>
+              class="install-btn flex items-center justify-center gap-1 cursor-pointer w-[176px] h-[49px] px-[39px] py-3 rounded-[10px] border border-[--website-tag-active-border]">
+              <img class="w-6 h-6" src="~/assets/icons/flash.svg" alt="" /><span
+                class="text-[#2ca7f8] font-semibold text-xs"
+                >一键安装</span
+              >
             </div>
             <div
               class="absolute top-[165px] left-[11px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
-              <img
-                src="~/assets/icons/package.svg"
-                alt="package"
-                class="w-4 h-4" />
+              <ClientOnly>
+                <img
+                  :src="isDark ? PackageDark : Package"
+                  alt="package"
+                  class="w-4 h-4" />
+              </ClientOnly>
             </div>
             <div
               class="absolute top-[196px] left-[75px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
-              <img
-                src="~/assets/icons/package.svg"
-                alt="package"
-                class="w-4 h-4" />
+              <ClientOnly>
+                <img
+                  :src="isDark ? PackageDark : Package"
+                  alt="package"
+                  class="w-4 h-4" />
+              </ClientOnly>
             </div>
             <div
               class="absolute top-[178px] right-[34px] flex justify-center items-center w-8 h-8 rounded-lg border border-[--website-tag-border]">
-              <img
-                src="~/assets/icons/package.svg"
-                alt="package"
-                class="w-4 h-4" />
+              <ClientOnly>
+                <img
+                  :src="isDark ? PackageDark : Package"
+                  alt="package"
+                  class="w-4 h-4" />
+              </ClientOnly>
             </div>
           </div>
         </div>
@@ -69,19 +84,21 @@
             {{ reason.cards[1].content }}
           </p>
           <div class="flex-1 relative">
-            <img
-              :src="isDark ? ShieldDark : Shield"
-              alt="shield"
-              class="absolute top-[-25px] left-[42px] w-[194px] h-[257px] z-0" />
+            <ClientOnly>
+              <img
+                :src="isDark ? ShieldDark : Shield"
+                alt="shield"
+                class="absolute top-[-25px] left-[42px] w-[194px] h-[257px] z-0" />
+            </ClientOnly>
           </div>
         </div>
         <!-- 社区强大区域 -->
         <div
           class="w-full flex flex-col flex-auto p-6 h-[400px] bg-[--website-layer-card-background] font-semibold rounded-xl border border-[--website-layer-card-border]">
           <span class="text-2xl">{{ reason.cards[2].title }}</span>
-          <p class="text-[--website-font-secondary] mt-[7px] z-20">
-            {{ reason.cards[2].content }}
-          </p>
+          <p
+            class="text-[--website-font-secondary] mt-[7px] z-20"
+            v-html="reason.cards[2].content"></p>
           <div class="flex-1 relative z-10 communication">
             <div class="absolute top-[-16px]">
               <div
@@ -212,6 +229,8 @@ import { useIntersectionObserver, usePreferredDark } from '@vueuse/core'
 import type { Reason } from '@/api/model'
 import Shield from '~/assets/imgs/shield.svg'
 import ShieldDark from '~/assets/imgs/shield-dark.svg'
+import Package from '~/assets/icons/package.svg'
+import PackageDark from '~/assets/icons/package-dark.svg'
 
 const { t } = useI18n()
 const isDark = usePreferredDark()

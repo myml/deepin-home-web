@@ -72,6 +72,25 @@ const _result = await useAsyncData('home', async () => {
   return Promise.all([getHome('zh'), getNews('zh')])
 })
 
+useHead({
+  titleTemplate: home.config?.seo.title,
+  meta: [
+    { name: 'description', content: home.config?.seo.description },
+    { name: 'keywords', content: home.config?.seo.keywords.join(',') },
+    { property: 'og:title', content: home.config?.seo.title },
+    { property: 'og:description', content: home.config?.seo.description },
+    { property: 'og:keywords', content: home.config?.seo.keywords }
+  ]
+})
+
+useSeoMeta({
+  titleTemplate: home.config?.seo.title,
+  ogTitle: home.config?.seo.title,
+  description: home.config?.seo.description,
+  ogDescription: home.config?.seo.description,
+  keywords: home.config?.seo.keywords.join(',')
+})
+
 // 提取图片url
 const parseImgUrl = (content: string) => {
   const reg = /<img.*?src="(.*?)".*?>/g

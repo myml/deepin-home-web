@@ -6,4 +6,5 @@
 definePageMeta({
   layout: 'admin'
 })
+defineI18nRoute(false)
 </script>

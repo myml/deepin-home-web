@@ -45,10 +45,10 @@
       <div ref="dropdown" class="dropdown">
         <div class="dropdown-wrap">
           <div class="dropdown-menu">
-            <span @click="changeLang('zh')">中文（简体）</span>
+            <span @click="switchLocalePath('zh')">中文（简体）</span>
           </div>
           <div class="dropdown-menu">
-            <span @click="changeLang('en')">English</span>
+            <span @click="switchLocalePath('en')">English</span>
           </div>
         </div>
       </div>
@@ -58,7 +58,6 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useLangStore } from '@/stores/lang'
 import type { Menu } from './menu'
 
 const { menu } = defineProps<{
@@ -67,12 +66,9 @@ const { menu } = defineProps<{
   langIcon?: string
 }>()
 
-const langStore = useLangStore()
-const allowOverflow = ref(false)
+const switchLocalePath = useSwitchLocalePath()
 
-const changeLang = (lang: string) => {
-  langStore.changeLang(lang)
-}
+const allowOverflow = ref(false)
 
 // 监听下拉菜单的hover状态
 let timer: ReturnType<typeof setTimeout> | null

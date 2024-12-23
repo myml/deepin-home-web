@@ -18,9 +18,9 @@ import Globe from '~/assets/icons/globe.svg'
 import GlobeDark from '~/assets/icons/globe-dark.svg'
 
 const isDark = usePreferredDark()
-const langStore = useLangStore()
+const { locale } = useI18n()
 const menu = computed(() => {
-  const menu = langStore.language === 'zh' ? MenuZh.menu : MenuEn.menu
+  const menu = locale.value == 'zh' ? MenuZh.menu : MenuEn.menu
   return menu as Menu[]
 })
 </script>

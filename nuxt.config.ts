@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxt/eslint', 'nuxt-gtag'],
   ssr: true,
   routeRules: {
-    '/': { prerender: true },
     '/admin': { redirect: '/admin/seo' },
     '/admin/*': { ssr: false },
   },
@@ -23,7 +22,11 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
-    vueI18n: '~/i18n/index.ts'
+    vueI18n: './i18n/index.ts',
+    locales: ['zh', 'en'],
+    strategy: 'prefix_and_default',
+    defaultLocale: 'zh',
+    detectBrowserLanguage: false
   },
   css: ['~/assets/scss/base.scss', '~/assets/scss/tailwindcss.scss', '~/assets/scss/variables.scss'],
 })

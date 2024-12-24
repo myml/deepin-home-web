@@ -1,7 +1,5 @@
-import type { API } from './api'
-import { mockAPI } from './mock'
+import { API } from './api'
 
 export const getAPI = (): API => {
-  // TODO等后端做好后替换成API
-  return new mockAPI()
+  return new API()
 }

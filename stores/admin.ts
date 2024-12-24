@@ -4,25 +4,24 @@ import type { HomeConfig, OpenSource, } from "~/api/model"
 export const useAdminStore = defineStore('Admin', () => {
   const api = getAPI()
   const admin = reactive<{ homeConfig?: HomeConfig, opensource?: OpenSource }>({})
+  // 配置是否有更改
+  const isConfigUpdated = ref(true)
   const getAdmin = async (lang: string) => {
     admin.homeConfig = await api.getHomeConfig(lang)
-    admin.opensource = await api.getOpenSource()
+    isConfigUpdated.value = false
   }
 
   const setHomeConfig = async  <T extends keyof HomeConfig>(lang: string, key: T, value: HomeConfig[T]) => {
     if (!admin.homeConfig) return;
-    // 如果配置有更改，更新配置
-    if (admin.homeConfig[key] !== value) {
-      admin.homeConfig[key] = value
-      await api.setHomeConfig(lang, admin.homeConfig)
-    } else {
-      console.log('配置无更改，不需要更新')
-    }
+    admin.homeConfig[key] = value
+    await api.setHomeConfig(lang, admin.homeConfig)
+    isConfigUpdated.value = true
   }
   return {
     admin,
     getAdmin,
-    setHomeConfig
+    setHomeConfig,
+    isConfigUpdated
   }
 
 })

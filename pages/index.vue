@@ -35,7 +35,7 @@
             @click="openUrl(item.link)"
             v-html="item.title.rendered"></div>
           <div
-            class="text-[--website-font-secondary] mt-3.5 text-sm"
+            class="text-[--website-font-secondary] mt-3.5 text-sm line-clamp-3"
             v-html="item.excerpt.rendered"></div>
           <div
             class="text-[--website-font-third] mt-3.5 text-xs"

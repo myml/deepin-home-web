@@ -28,5 +28,19 @@ export default defineNuxtConfig({
     defaultLocale: 'zh',
     detectBrowserLanguage: false
   },
+  nitro: {
+    devProxy: {
+      "/api": {
+        target: process.env.NUXT_API_BASE_URL,
+        changeOrigin: true,
+        prependPath: true
+      }
+    }
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_API_BASE_URL
+    }
+  },
   css: ['~/assets/scss/base.scss', '~/assets/scss/tailwindcss.scss', '~/assets/scss/variables.scss'],
 })

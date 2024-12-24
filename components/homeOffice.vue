@@ -15,6 +15,7 @@
           {{ card.content }}
         </div>
       </div>
+      <div class="flex-1"></div>
 
       <div class="relative mx-1.5 rounded-lg overflow-hidden">
         <img :src="card.cover" :alt="card.title" />

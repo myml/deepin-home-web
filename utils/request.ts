@@ -1,7 +1,7 @@
 import { Axios } from 'axios'
 
 const request = new Axios({
-  baseURL: '/',
+  baseURL: import.meta.server ? process.env.NUXT_API_BASE_URL : "/api",
   timeout: 5000
 })
 
@@ -18,6 +18,7 @@ request.interceptors.request.use(
 // 响应拦截器
 request.interceptors.response.use(
   response => {
+    response.data = JSON.parse(response.data)
     return response
   },
   error => {

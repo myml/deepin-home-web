@@ -45,10 +45,10 @@
       <div ref="dropdown" class="dropdown">
         <div class="dropdown-wrap">
           <div class="dropdown-menu">
-            <span @click="switchLocalePath('zh')">中文（简体）</span>
+            <NuxtLink to="/">中文（简体）</NuxtLink>
           </div>
           <div class="dropdown-menu">
-            <span @click="switchLocalePath('en')">English</span>
+            <NuxtLink to="/en">English</NuxtLink>
           </div>
         </div>
       </div>
@@ -65,8 +65,6 @@ const { menu } = defineProps<{
   isLangSwitcher?: boolean
   langIcon?: string
 }>()
-
-const switchLocalePath = useSwitchLocalePath()
 
 const allowOverflow = ref(false)
 
@@ -133,6 +131,7 @@ watch(
     color: var(--website-font-primary);
     cursor: pointer;
     user-select: none;
+    text-wrap: nowrap;
   }
 
   .dropdown {
@@ -140,7 +139,7 @@ watch(
     position: absolute;
     top: 100%;
     left: 0;
-    width: 132px;
+    min-width: 132px;
     visibility: hidden;
     z-index: 999;
     overflow: hidden;

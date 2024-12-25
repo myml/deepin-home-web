@@ -18,7 +18,18 @@
           </template>
           <template #extra>
             <div class="flex items-center">
-              <el-button type="primary" class="ml-2">username</el-button>
+              <el-dropdown>
+                <el-button type="primary" class="ml-2">{{
+                  adminStore.userName
+                }}</el-button>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item @click="logout"
+                      >退出登录</el-dropdown-item
+                    >
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
             </div>
           </template>
         </el-page-header>
@@ -29,3 +40,24 @@
     </el-container>
   </el-container>
 </template>
+
+<script lang="ts" setup>
+import { getAPI } from '~/api'
+
+const adminStore = useAdminStore()
+
+const logout = () => {
+  getAPI()
+    .logout()
+    .then(res => {
+      if (res.data.code === 200) {
+        adminStore.isLogin = false
+        localStorage.removeItem('token')
+        useRouter().push('/login')
+      }
+    })
+    .catch(err => {
+      console.log(err.response.data.msg)
+    })
+}
+</script>

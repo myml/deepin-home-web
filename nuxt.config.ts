@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/admin': { redirect: '/admin/seo' },
     '/admin/*': { ssr: false },
+    '/login': { ssr: false }
   },
   gtag: {
     enabled: process.env.NODE_ENV === 'production',

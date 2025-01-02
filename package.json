@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build --dotenv .env.production",
-    "dev": "nuxt dev --dotenv .env.development",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "dev": "nuxt dev --dotenv .env.development --host 0.0.0.0",
+    "generate": "nuxt generate --dotenv .env.production",
+    "preview": "nuxt preview --dotenv .env.production",
     "postinstall": "nuxt prepare",
     "lint": "eslint . --fix",
     "prepare": "husky"

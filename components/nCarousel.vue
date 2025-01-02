@@ -8,7 +8,7 @@
     :card-scale="1"
     @change="change">
     <el-carousel-item
-      v-for="(item, index) in filterExpired()"
+      v-for="(item, index) in filteredValueList"
       :key="index"
       :class="`class${index}`">
       <div class="w-full h-full overflow-hidden rounded-2xl">
@@ -48,17 +48,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { ref, nextTick, onMounted, onBeforeUnmount, computed } from 'vue'
 import type { CarouselCard } from '@/api/model'
-import { dayjs } from 'element-plus'
 
-/**
- * 轮播图组件
- * @props:
- *  - valueList: 数据列表 必填 最少3个
- *  - interval: 轮播间隔时间 默认5000ms
- *  - height: 轮播高度 默认400px
- */
 const props = defineProps({
   valueList: {
     type: Array<CarouselCard>,
@@ -130,10 +122,27 @@ const openUrl = (url: string, index: number = -1) => {
 }
 
 // 从valueList里过滤掉过期的轮播图
-const filterExpired = () => {
+const filteredValueList = computed(() => {
   return props.valueList.filter(item => {
-    const now = dayjs()
-    return now.isAfter(item.online_time) || now.isBefore(item.downline_time)
+    const now = new Date()
+    const onlineTime = item.online_time ? new Date(item.online_time) : null
+    const downlineTime = item.downline_time
+      ? new Date(item.downline_time)
+      : null
+
+    if (!onlineTime && !downlineTime) {
+      return true // 如果没有设置上线时间和下线时间，则始终显示
+    }
+
+    if (onlineTime && now < onlineTime) {
+      return false // 如果当前时间小于上线时间，则不显示
+    }
+
+    if (downlineTime && now > downlineTime) {
+      return false // 如果当前时间大于下线时间，则不显示
+    }
+
+    return true // 其他情况显示
   })
-}
+})
 </script>

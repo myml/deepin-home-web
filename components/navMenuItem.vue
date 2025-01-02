@@ -58,7 +58,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { Menu } from './menu'
+import type { Menu } from '~/api/model'
 
 const { menu } = defineProps<{
   menu?: Menu

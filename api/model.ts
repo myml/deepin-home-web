@@ -1,10 +1,31 @@
 export interface HomeConfig {
+  nav: Nav
   seo: Seo
   carousel: Carousel
   reason: Reason
   feature: Feature
   apps: Apps
   footer: Footer
+}
+
+export interface Nav {
+  menu: Menu[];
+}
+
+export interface Menu {
+  name: string;
+  url: string;
+  children: MenuChildren[];
+}
+interface MenuChildren {
+  name: string;
+  url: string;
+  children: Child[];
+}
+
+interface Child {
+  name: string;
+  url: string;
 }
 
 export interface Seo {

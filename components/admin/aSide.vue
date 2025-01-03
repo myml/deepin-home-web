@@ -1,8 +1,7 @@
 <template>
   <el-aside width="200px" class="bg-[#545c64] text-white">
     <div
-      class="text-center py-3 font-semibold text-lg border-b border-zinc-400"
-    >
+      class="text-center py-3 font-semibold text-lg border-b border-zinc-400">
       deepin官网后台管理
     </div>
     <el-menu
@@ -10,8 +9,7 @@
       class="border-r-0"
       background-color="#545c64"
       text-color="#fff"
-      router
-    >
+      router>
       <el-menu-item index="/admin/seo">
         <el-icon><icon-menu /></el-icon>
         <span>SEO</span>
@@ -32,9 +30,13 @@
         <el-icon><icon-menu /></el-icon>
         <span>生产力工具</span>
       </el-menu-item>
+      <el-menu-item index="/admin/nav">
+        <el-icon><icon-menu /></el-icon>
+        <span>导航栏</span>
+      </el-menu-item>
       <el-menu-item index="/admin/footer">
         <el-icon><icon-menu /></el-icon>
-        <span>Footer配置</span>
+        <span>Footer</span>
       </el-menu-item>
     </el-menu></el-aside
   >

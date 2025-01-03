@@ -1,6 +1,6 @@
 <template>
   <div class="menu-item">
-    <template v-if="!isLangSwitcher && menu">
+    <template v-if="!isLangSwitcher && menu && menu.children">
       <a v-if="!menu.children.length" :href="menu.url" v-text="menu.name" />
       <span v-else v-text="menu.name" />
 
@@ -16,15 +16,15 @@
             :key="child.name"
             class="dropdown-menu">
             <a
-              v-if="!child.children.length"
+              v-if="child.children && !child.children.length"
               :href="child.url"
               v-text="child.name" />
             <span v-else v-text="child.name" />
             <img
-              v-if="child.children.length"
+              v-if="child.children && child.children.length"
               src="~/assets/icons/chevron-right.svg" />
             <!-- 二级子菜单 -->
-            <div v-if="child.children.length" class="submenu">
+            <div v-if="child.children && child.children.length" class="submenu">
               <div class="submenu-wrap">
                 <div
                   v-for="subChild in child.children"

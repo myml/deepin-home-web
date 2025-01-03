@@ -13,19 +13,10 @@ export interface Nav {
 }
 
 export interface Menu {
+  id?: number;
   name: string;
   url: string;
-  children: MenuChildren[];
-}
-interface MenuChildren {
-  name: string;
-  url: string;
-  children: Child[];
-}
-
-interface Child {
-  name: string;
-  url: string;
+  children?: Menu[];
 }
 
 export interface Seo {

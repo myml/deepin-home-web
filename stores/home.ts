@@ -7,7 +7,6 @@ export const useHomeStore = defineStore('Home', () => {
   const getHome = async (lang: string) => {
     home.config = await api.getHomeConfig(lang)
     home.opensource = await api.getOpenSource()
-    return true
   }
   const news = reactive<{ data: News[]; loading: boolean }>({
     data: [],

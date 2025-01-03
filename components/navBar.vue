@@ -1,6 +1,5 @@
 <template>
   <nav
-    v-if="home.config"
     class="fixed top-0 left-0 w-full h-16 z-[9999] bg-[--website-layer-background]">
     <div class="max-w-5xl mx-auto w-full h-full flex justify-between">
       <div class="text-[26.82px] font-bold flex items-center">
@@ -25,7 +24,6 @@ import { usePreferredDark } from '@vueuse/core'
 
 const logoHover = ref(false)
 const isDark = usePreferredDark()
-const { home } = useHomeStore()
 const logoSrc = computed(() =>
   logoHover.value ? DeepinColor : isDark.value ? DeepinMonoDark : DeepinMono
 )

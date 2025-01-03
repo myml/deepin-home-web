@@ -1,21 +1,6 @@
 <template>
   <div>
-    <el-row>
-      <el-col>
-        <span
-          class="text-lg px-3 py-1 cursor-pointer hover:border-b-2 mx-1 hover:border-blue-400"
-          :class="activeName === 'zh' ? 'border-b-2 border-blue-400' : ''"
-          @click="handleClick('zh')"
-          >中文</span
-        >
-        <span
-          class="text-lg px-3 py-1 cursor-pointer hover:border-b-2 mx-1 hover:border-blue-400"
-          :class="activeName === 'en' ? 'border-b-2 border-blue-400' : ''"
-          @click="handleClick('en')"
-          >英文</span
-        >
-      </el-col>
-    </el-row>
+    <AdminTabBar :active-name="activeName" @clicked="handleClick" />
     <el-card v-for="(menu, index) in nav.menu" :key="index" class="my-4">
       <template #footer>
         <el-row align="middle">
@@ -130,7 +115,7 @@ const asyncData = async () => {
   }
 }
 const loading = ref(false)
-const activeName = ref('zh')
+const activeName = ref<'zh' | 'en'>('zh')
 const nav = ref<Nav>({} as Nav)
 
 asyncData()

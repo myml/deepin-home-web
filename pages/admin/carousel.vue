@@ -1,174 +1,84 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane
-      ref="elTabPaneRef"
-      v-loading="loading"
-      class="min-h-[80vh] py-4"
-      label="中文"
-      name="zh">
-      <el-row class="mb-4">
-        <el-col :span="24">
-          <el-button type="primary" size="large" @click="addCarousel"
-            >添加轮播图</el-button
-          >
-        </el-col>
-      </el-row>
-      <el-row class="bg-[#E6E8EB] py-2 border">
-        <el-col :span="2" class="px-2 font-bold text-lg">
-          <span>序号</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>标题</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>描述</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>状态</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>图片</span>
-        </el-col>
-        <el-col :span="6" class="px-2 font-bold text-lg">
-          <span>操作</span>
-        </el-col>
-      </el-row>
-      <el-row
-        v-for="(carousel, index) in carouselList.cards"
-        :key="index"
-        class="py-2 border">
-        <el-col :span="2" class="px-2 items-center" style="display: flex">
-          <span>{{ index + 1 }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <span>{{ carousel.title || '未设置' }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <span>{{ carousel.content || '未设置' }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <span>{{
-            getStatus(carousel.online_time, carousel.downline_time)
-          }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <img
-            v-if="carousel.image"
-            :src="carousel.image"
-            class="w-full"
-            referrerpolicy="no-referrer" />
-          <span v-else class="text-red">未设置图片</span>
-        </el-col>
-        <el-col :span="6" class="px-2 items-center" style="display: flex">
-          <el-button type="primary" @click="openEditDialog(index)"
-            >编辑</el-button
-          >
-          <el-button type="success" :disabled="!index" @click="moveUp(index)"
-            >上移</el-button
-          >
-          <el-button
-            type="success"
-            :disabled="index === carouselList.cards.length - 1"
-            @click="moveDown(index)"
-            >下移</el-button
-          >
-          <el-button type="danger" @click="removeBanner(index)">删除</el-button>
-        </el-col>
-      </el-row>
-      <el-row class="mt-4">
-        <el-button
-          type="primary"
-          size="large"
-          :disabled="!isSaveDisabled"
-          @click="saveCarousel"
-          >保存</el-button
+  <div>
+    <AdminTabBar :active-name="activeName" @clicked="handleClick" />
+    <el-row class="mb-4 mt-3">
+      <el-col :span="24">
+        <el-button type="primary" size="large" @click="addCarousel"
+          >添加轮播图</el-button
         >
-      </el-row>
-    </el-tab-pane>
-    <el-tab-pane
-      v-loading="loading"
-      label="英文"
-      class="min-h-[80vh] py-4"
-      name="en">
-      <el-row class="mb-4">
-        <el-col :span="24">
-          <el-button type="primary" size="large" @click="addCarousel"
-            >添加轮播图</el-button
-          >
-        </el-col>
-      </el-row>
-      <el-row class="bg-[#E6E8EB] py-2 border">
-        <el-col :span="2" class="px-2 font-bold text-lg">
-          <span>序号</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>标题</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>描述</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>状态</span>
-        </el-col>
-        <el-col :span="4" class="px-2 font-bold text-lg">
-          <span>图片</span>
-        </el-col>
-        <el-col :span="6" class="px-2 font-bold text-lg">
-          <span>操作</span>
-        </el-col>
-      </el-row>
-      <el-row
-        v-for="(carousel, index) in carouselList.cards"
-        :key="index"
-        class="py-2 border">
-        <el-col :span="2" class="px-2 items-center" style="display: flex">
-          <span>{{ index + 1 }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <span>{{ carousel.title || '未设置' }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <span>{{ carousel.content || '未设置' }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <span>{{
-            getStatus(carousel.online_time, carousel.downline_time)
-          }}</span>
-        </el-col>
-        <el-col :span="4" class="px-2 items-center" style="display: flex">
-          <img
-            v-if="carousel.image"
-            :src="carousel.image"
-            class="w-full"
-            referrerpolicy="no-referrer" />
-          <span v-else class="text-red">未设置图片</span>
-        </el-col>
-        <el-col :span="6" class="px-2 items-center" style="display: flex">
-          <el-button type="primary" @click="openEditDialog(index)"
-            >编辑</el-button
-          >
-          <el-button type="success" :disabled="!index" @click="moveUp(index)"
-            >上移</el-button
-          >
-          <el-button
-            type="success"
-            :disabled="index === carouselList.cards.length - 1"
-            @click="moveDown(index)"
-            >下移</el-button
-          >
-          <el-button type="danger" @click="removeBanner(index)">删除</el-button>
-        </el-col>
-      </el-row>
-      <el-row class="mt-4">
-        <el-button
-          type="primary"
-          size="large"
-          :disabled="!isSaveDisabled"
-          @click="saveCarousel"
-          >保存</el-button
+      </el-col>
+    </el-row>
+    <el-row class="bg-[#E6E8EB] py-2 border">
+      <el-col :span="2" class="px-2 font-bold text-lg">
+        <span>序号</span>
+      </el-col>
+      <el-col :span="4" class="px-2 font-bold text-lg">
+        <span>标题</span>
+      </el-col>
+      <el-col :span="4" class="px-2 font-bold text-lg">
+        <span>描述</span>
+      </el-col>
+      <el-col :span="4" class="px-2 font-bold text-lg">
+        <span>状态</span>
+      </el-col>
+      <el-col :span="4" class="px-2 font-bold text-lg">
+        <span>图片</span>
+      </el-col>
+      <el-col :span="6" class="px-2 font-bold text-lg">
+        <span>操作</span>
+      </el-col>
+    </el-row>
+    <el-row
+      v-for="(carousel, index) in carouselList.cards"
+      :key="index"
+      class="py-2 border">
+      <el-col :span="2" class="px-2 items-center" style="display: flex">
+        <span>{{ index + 1 }}</span>
+      </el-col>
+      <el-col :span="4" class="px-2 items-center" style="display: flex">
+        <span>{{ carousel.title || '未设置' }}</span>
+      </el-col>
+      <el-col :span="4" class="px-2 items-center" style="display: flex">
+        <span>{{ carousel.content || '未设置' }}</span>
+      </el-col>
+      <el-col :span="4" class="px-2 items-center" style="display: flex">
+        <span>{{
+          getStatus(carousel.online_time, carousel.downline_time)
+        }}</span>
+      </el-col>
+      <el-col :span="4" class="px-2 items-center" style="display: flex">
+        <img
+          v-if="carousel.image"
+          :src="carousel.image"
+          class="w-full"
+          referrerpolicy="no-referrer" />
+        <span v-else class="text-red">未设置图片</span>
+      </el-col>
+      <el-col :span="6" class="px-2 items-center" style="display: flex">
+        <el-button type="primary" @click="openEditDialog(index)"
+          >编辑</el-button
         >
-      </el-row>
-    </el-tab-pane>
+        <el-button type="success" :disabled="!index" @click="moveUp(index)"
+          >上移</el-button
+        >
+        <el-button
+          type="success"
+          :disabled="index === carouselList.cards.length - 1"
+          @click="moveDown(index)"
+          >下移</el-button
+        >
+        <el-button type="danger" @click="removeBanner(index)">删除</el-button>
+      </el-col>
+    </el-row>
+    <el-row class="mt-4">
+      <el-button
+        type="primary"
+        size="large"
+        :disabled="!isSaveDisabled"
+        @click="saveCarousel"
+        >保存</el-button
+      >
+    </el-row>
     <el-dialog v-model="editDialogVisible" title="编辑轮播图">
       <el-form
         ref="editForm"
@@ -275,17 +185,13 @@
         </div>
       </template>
     </el-dialog>
-  </el-tabs>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import type { Carousel, CarouselCard } from '@/api/model'
 import { ref, reactive } from 'vue'
-import {
-  ElMessage,
-  type FormInstance,
-  type TabsPaneContext
-} from 'element-plus'
+import { ElMessage, type FormInstance } from 'element-plus'
 
 const adminStore = useAdminStore()
 const asyncData = async () => {
@@ -298,8 +204,7 @@ const asyncData = async () => {
 }
 const loading = ref(false)
 const carouselList = ref<Carousel>({} as Carousel)
-const activeName = ref('zh')
-const elTabPaneRef = ref<HTMLElement>()
+const activeName = ref<'zh' | 'en'>('zh')
 asyncData()
 
 const saveCarousel = () => {
@@ -315,8 +220,8 @@ const saveCarousel = () => {
   isSaveDisabled.value = false
 }
 
-const handleClick = (tab: TabsPaneContext) => {
-  activeName.value = tab.props.name as string
+const handleClick = (tab: 'zh' | 'en') => {
+  activeName.value = tab
   asyncData()
 }
 

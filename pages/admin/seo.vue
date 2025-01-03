@@ -1,89 +1,41 @@
 <template>
   <div>
-    <el-tabs v-model="activeName" class="p-3" @tab-click="handleClick">
-      <el-tab-pane
-        v-loading="loading"
-        class="min-h-[80vh] p-3"
-        label="中文"
-        name="zh">
-        <el-form>
-          <el-form-item label="标题">
-            <el-input v-model="seo.title" placeholder="请输入标题" />
-          </el-form-item>
-          <el-form-item label="语言">
-            <el-input v-model="seo.lang" placeholder="请输入语言" />
-          </el-form-item>
-          <el-form-item label="描述">
-            <el-input
-              v-model="seo.description"
-              type="textarea"
-              placeholder="请输入描述" />
-          </el-form-item>
-          <el-form-item label="关键字">
-            <div class="flex items-center gap-2 flex-wrap">
-              <el-tag
-                v-for="(keyword, tagIndex) in seo.keywords"
-                :key="tagIndex"
-                class="cursor-pointer"
-                closable
-                @close="seo.keywords.splice(tagIndex, 1)"
-                >{{ keyword }}</el-tag
-              >
-              <el-tag
-                effect="plain"
-                class="cursor-pointer"
-                @click="showAddKeywordDialog"
-                >+ 添加</el-tag
-              >
-            </div>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="saveSeo">保存</el-button>
-          </el-form-item>
-        </el-form>
-      </el-tab-pane>
-      <el-tab-pane
-        v-loading="loading"
-        class="min-h-[80vh] p-3"
-        label="英文"
-        name="en">
-        <el-form>
-          <el-form-item label="标题">
-            <el-input v-model="seo.title" placeholder="请输入标题" />
-          </el-form-item>
-          <el-form-item label="语言">
-            <el-input v-model="seo.lang" placeholder="请输入语言" />
-          </el-form-item>
-          <el-form-item label="描述">
-            <el-input
-              v-model="seo.description"
-              type="textarea"
-              placeholder="请输入描述" />
-          </el-form-item>
-          <el-form-item label="关键字">
-            <div class="flex items-center gap-2 flex-wrap">
-              <el-tag
-                v-for="(keyword, tagIndex) in seo.keywords"
-                :key="tagIndex"
-                class="cursor-pointer"
-                closable
-                @close="seo.keywords.splice(tagIndex, 1)"
-                >{{ keyword }}</el-tag
-              >
-              <el-tag
-                effect="plain"
-                class="cursor-pointer"
-                @click="showAddKeywordDialog"
-                >+ 添加</el-tag
-              >
-            </div>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="saveSeo">保存</el-button>
-          </el-form-item>
-        </el-form>
-      </el-tab-pane>
-    </el-tabs>
+    <admin-tab-bar :active-name="activeName" @clicked="handleClick" />
+    <el-form class="mt-4">
+      <el-form-item label="标题">
+        <el-input v-model="seo.title" placeholder="请输入标题" />
+      </el-form-item>
+      <el-form-item label="语言">
+        <el-input v-model="seo.lang" placeholder="请输入语言" />
+      </el-form-item>
+      <el-form-item label="描述">
+        <el-input
+          v-model="seo.description"
+          type="textarea"
+          placeholder="请输入描述" />
+      </el-form-item>
+      <el-form-item label="关键字">
+        <div class="flex items-center gap-2 flex-wrap">
+          <el-tag
+            v-for="(keyword, tagIndex) in seo.keywords"
+            :key="tagIndex"
+            class="cursor-pointer"
+            closable
+            @close="seo.keywords.splice(tagIndex, 1)"
+            >{{ keyword }}</el-tag
+          >
+          <el-tag
+            effect="plain"
+            class="cursor-pointer"
+            @click="showAddKeywordDialog"
+            >+ 添加</el-tag
+          >
+        </div>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="saveSeo">保存</el-button>
+      </el-form-item>
+    </el-form>
 
     <el-dialog
       v-model="addKeywordDialogVisiable"
@@ -107,7 +59,7 @@
 <script lang="ts" setup>
 import type { Seo } from '@/api/model'
 import { ref } from 'vue'
-import { ElMessage, type TabsPaneContext } from 'element-plus'
+import { ElMessage } from 'element-plus'
 
 const adminStore = useAdminStore()
 const asyncData = async () => {
@@ -119,14 +71,14 @@ const asyncData = async () => {
   }
 }
 const loading = ref(false)
-const activeName = ref('zh')
+const activeName = ref<'zh' | 'en'>('zh')
 const seo = ref<Seo>({} as Seo)
 const addKeywordDialogVisiable = ref(false)
 const addKeywordTitle = ref('')
 asyncData()
 
-const handleClick = (tab: TabsPaneContext) => {
-  activeName.value = tab.props.name as string
+const handleClick = (tab: 'zh' | 'en') => {
+  activeName.value = tab
   asyncData()
 }
 

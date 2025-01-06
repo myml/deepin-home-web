@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-5xl mx-auto mt-36 mb-5">
     <div class="text-3xl font-semibold">
-      <span v-html="highlightDeepin(t('tips.reason'))" />
+      <span v-html="highlightDeepin(reason.title)" />
     </div>
     <div class="grid grid-cols-3 gap-5 mt-5">
       <template v-if="reason.cards.length">
@@ -43,8 +43,8 @@
             <div
               class="install-btn flex items-center justify-center gap-1 cursor-pointer w-[176px] h-[49px] px-[39px] py-3 rounded-[10px] border border-[--website-tag-active-border]">
               <img class="w-6 h-6" src="~/assets/icons/flash.svg" alt="" /><span
-                class="text-[#2ca7f8] font-semibold text-xs"
-                >一键安装</span
+                class="text-[#2ca7f8] font-semibold text-xs text-nowrap"
+                >{{ t('tips.install') }}</span
               >
             </div>
             <div
@@ -211,7 +211,7 @@
                   v-for="(repo, repoIndex) in row"
                   :key="repoIndex"
                   class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]">
-                  <span class="whitespace-nowrap">{{ repo.title }}</span>
+                  <span class="whitespace-nowrap">{{ repo.name }}</span>
                 </div>
               </div>
             </div>
@@ -240,8 +240,8 @@ const { reason } = defineProps<{
 }>()
 
 const reposRow = ref(6)
-const repos = ref<{ title: string; link: string }[][]>([])
-const reposCopy = ref<{ title: string; link: string }[][]>([])
+const repos = ref<{ name: string; url: string }[][]>([])
+const reposCopy = ref<{ name: string; url: string }[][]>([])
 // 检测代码开源区域的可见性，动态的滚动和停止滚动
 const codeOpenSource = ref(null)
 const codeOpenSourceTranslateX = ref(0)
@@ -278,14 +278,14 @@ useIntersectionObserver(codeOpenSource, ([entry]) => {
 
 // 分配数据
 const calculateRepos = (
-  _repos: { title: string; link: string }[] | undefined
+  _repos: { name: string; url: string }[] | undefined
 ) => {
   if (!_repos) {
     return
   }
   repos.value = []
   reposCopy.value = []
-  const result: { title: string; link: string }[][] = []
+  const result: { name: string; url: string }[][] = []
   // 创建6个空数组
   for (let i = 0; i < reposRow.value; i++) {
     result.push([])
@@ -293,9 +293,9 @@ const calculateRepos = (
   // 每次遍历，计算哪个数组里面的每一个元素的字符串长度总和最小，然后放进去
   for (let i = 0; i < _repos.length; i++) {
     let minIndex = 0
-    let min = result[0].reduce((acc, cur) => acc + cur.title.length, 0)
+    let min = result[0].reduce((acc, cur) => acc + cur.name.length, 0)
     for (let j = 1; j < reposRow.value; j++) {
-      const sum = result[j].reduce((acc, cur) => acc + cur.title.length, 0)
+      const sum = result[j].reduce((acc, cur) => acc + cur.name.length, 0)
       if (sum < min) {
         min = sum
         minIndex = j

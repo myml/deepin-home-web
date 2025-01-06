@@ -72,7 +72,6 @@ const { t, locale } = useI18n()
 const { home, getHome, news, getNews } = useHomeStore()
 
 const _result = await useAsyncData('home', async () => {
-  console.log('home')
   return Promise.all([getHome(locale.value), getNews(locale.value)])
 })
 

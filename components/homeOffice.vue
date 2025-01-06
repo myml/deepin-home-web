@@ -1,5 +1,5 @@
 <template>
-  <div class="text-3xl font-semibold" v-html="t('tips.feature')" />
+  <div class="text-3xl font-semibold" v-html="setting.title" />
   <section class="grid grid-cols-4 gap-6 mt-5">
     <div
       v-for="(card, index) in setting.cards"

@@ -49,7 +49,7 @@ export interface Reason {
   cards: {
     title: string;
     content: string;
-    repos?: { title: string, link: string }[]
+    repos?: { name: string, url: string }[]
   }[]
 }
 

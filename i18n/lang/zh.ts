@@ -1,8 +1,6 @@
 export default {
   tips: {
-    reason: '选择deepin的理由',
-    feature: '特色功能实用更高效',
-    productivity: '生产力让生活更美好',
+    install: '一键安装',
     community: '社区动态',
     openSource: '开源社区',
     contribution: '贡献看板',

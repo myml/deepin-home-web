@@ -44,7 +44,7 @@
       <div class="text-center">
         <div>Made with Love by deepin Web SIG.</div>
         <div class="mt-3">
-          © 2011-2024 Wuhan Deepin Technology Co., Ltd.
+          © 2011-2025 Wuhan Deepin Technology Co., Ltd.
           <a
             class="underline text-[--website-font-secondary]"
             href="https://beian.miit.gov.cn"

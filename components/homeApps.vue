@@ -1,11 +1,10 @@
 <template>
-  <div class="text-3xl font-semibold" v-html="t('tips.productivity')"/>
+  <div class="text-3xl font-semibold" v-html="setting.title" />
   <section class="mt-5 grid grid-cols-2 gap-2">
     <div
       v-for="(card, index) in setting.cards"
       :key="index"
-      class="flex flex-col bg-[--website-layer-card-background] rounded-xl border border-[--website-layer-card-border]"
-    >
+      class="flex flex-col bg-[--website-layer-card-background] rounded-xl border border-[--website-layer-card-border]">
       <div class="min-h-40 p-5">
         <h3 class="text-lg font-semibold my-4">
           {{ card.title }}
@@ -20,22 +19,20 @@
           v-for="(v, index) in card.list"
           :key="index"
           class="flex items-center pl-4 border border-[--website-app-border] border-l-0 border-b-0 h-10 whitespace-nowrap text-xs"
-          :class="{ 'border-r-0': index % 3 === 2 }"
-        >
+          :class="{ 'border-r-0': index % 3 === 2 }">
           <template v-if="!v.disabled">
-            <img class="w-6 h-6 mr-1" :src="v.image" :alt="v.title" >
+            <img class="w-6 h-6 mr-1" :src="v.image" :alt="v.title" />
             <a v-if="v.link" :href="v.link" targe="_blank"> {{ v.title }} </a>
             <span v-if="!v.link"> {{ v.title }} </span>
           </template>
           <template v-else>
-            <div class="w-6 h-6 mr-1"/>
+            <div class="w-6 h-6 mr-1" />
             <a
               v-if="v.link"
               class="text-[#c5c5c5]"
               :href="v.link"
               target="_blank"
-              rel="noopener"
-            >
+              rel="noopener">
               {{ v.title }}
             </a>
             <span v-if="!v.link"> {{ v.title }} </span>

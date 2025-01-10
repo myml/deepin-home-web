@@ -91,7 +91,12 @@ const saveFeature = () => {
     ElMessage.error('卡片标题、内容、图片、封面、链接不能为空')
     return
   }
-  localStorage.setItem('feature', JSON.stringify(feature))
-  ElMessage.success('保存成功')
+
+  try {
+    adminStore.setHomeConfig(activeName.value, 'feature', feature.value)
+    ElMessage.success('保存成功')
+  } catch (error) {
+    ElMessage.error('保存失败: ' + error)
+  }
 }
 </script>

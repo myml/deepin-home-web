@@ -45,10 +45,8 @@
 
 <script lang="ts" setup>
 import type { Apps } from '@/api/model'
-import { useI18n } from 'vue-i18n'
 
 const { setting } = defineProps<{
   setting: Apps
 }>()
-const { t } = useI18n()
 </script>

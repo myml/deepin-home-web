@@ -23,25 +23,42 @@
           class="absolute right-0 bottom-0 top-12 w-[60px] h-[60px]"
           alt="play"
           src="~/assets/play.svg" />
-        <a
-          class="absolute inset-0 flex items-center justify-center opacity-0 bg-[#008cba] hover:opacity-100 transition-opacity ease-in-out duration-500"
-          rel="noopener"
-          target="_blank"
-          :href="card.url">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 cursor-pointer bg-[#008cba] hover:opacity-100 transition-opacity ease-in-out duration-500"
+          @click="openVideoDialog(card.url, card.title)">
           <div class="text-sm text-white">
             {{ card.title }}
           </div>
-        </a>
+        </div>
       </div>
     </div>
+    <el-dialog
+      v-model="videoDialogVisible"
+      align-center
+      style="padding: 50px"
+      :title="dialogTitle"
+      destroy-on-close>
+      <video style="width: 1024px" :src="videoSrc" autoplay controls></video>
+    </el-dialog>
   </section>
 </template>
 
 <script setup lang="ts">
 import type { Feature } from '@/api/model'
 
-const { t } = useI18n()
 const { setting } = defineProps<{
   setting: Feature
 }>()
+
+const dialogTitle = ref('')
+
+const videoDialogVisible = ref(false)
+const videoSrc = ref('')
+
+const openVideoDialog = (url: string, title: string) => {
+  console.log(url)
+  dialogTitle.value = title
+  videoSrc.value = url
+  videoDialogVisible.value = true
+}
 </script>

@@ -41,7 +41,8 @@
               </ClientOnly>
             </div>
             <div
-              class="install-btn flex items-center justify-center gap-1 cursor-pointer w-[176px] h-[49px] px-[39px] py-3 rounded-[10px] border border-[--website-tag-active-border]">
+              class="install-btn flex items-center justify-center gap-1 cursor-pointer w-[176px] h-[49px] px-[39px] py-3 rounded-[10px] border border-[--website-tag-active-border]"
+              @click="goDownload">
               <img class="w-6 h-6" src="~/assets/icons/flash.svg" alt="" /><span
                 class="text-[#2ca7f8] font-semibold text-xs text-nowrap"
                 >{{ t('tips.install') }}</span
@@ -106,29 +107,37 @@
                 <div class="w-[233px] h-[233px] z-30 circle-container">
                   <div class="w-[189px] h-[189px] z-40 circle-container">
                     <div class="w-[145px] h-[145px] z-50 circle-container">
-                      <div class="wechat element">
+                      <div v-if="locale === 'zh'" class="wechat element">
                         <img
                           src="~/assets/apps/wechat.png"
                           alt="wechat"
-                          class="rounded-full" />
+                          class="rounded-full"
+                          @click="
+                            openUrl(
+                              'https://bbs.deepin.org/assets/contact/wx.png'
+                            )
+                          " />
                       </div>
                       <div class="element github">
                         <img
                           src="~/assets/apps/github.jpg"
                           alt="github"
-                          class="rounded-full" />
+                          class="rounded-full"
+                          @click="openUrl('https://github.com/linuxdeepin')" />
                       </div>
                       <div class="element x">
                         <img
                           src="~/assets/apps/x.jpg"
                           alt="x"
-                          class="rounded-full" />
+                          class="rounded-full"
+                          @click="openUrl('https://x.com/linux_deepin')" />
                       </div>
                       <div class="element telegram">
                         <img
                           src="~/assets/apps/telegram.jpg"
                           alt="telegram"
-                          class="rounded-full" />
+                          class="rounded-full"
+                          @click="openUrl('https://t.me/deepin')" />
                       </div>
                       <div class="w-[101px] h-[101px] circle-container">
                         <div class="w-[57px] h-[57px] circle-container center">
@@ -210,7 +219,8 @@
                 <div
                   v-for="(repo, repoIndex) in row"
                   :key="repoIndex"
-                  class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]">
+                  class="flex h-[35px] items-center bg-[--website-tag-background] text-sm cursor-pointer text-[--website-font-secondary] font-normal rounded-lg px-4 py-2 border border-[--website-tag-border] hover:text-[--website-font-active] hover:bg-[--website-tag-active-background] hover:border-[--website-tag-active-border]"
+                  @click="openUrl(repo.url)">
                   <span class="whitespace-nowrap">{{ repo.name }}</span>
                 </div>
               </div>
@@ -232,7 +242,7 @@ import ShieldDark from '~/assets/imgs/shield-dark.svg'
 import Package from '~/assets/icons/package.svg'
 import PackageDark from '~/assets/icons/package-dark.svg'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const isDark = usePreferredDark()
 
 const { reason } = defineProps<{
@@ -307,6 +317,14 @@ const calculateRepos = (
   reposCopy.value = result
 }
 calculateRepos(reason.cards[reason.cards.length - 1].repos)
+
+const goDownload = () => {
+  window.open(`https://www.deepin.org/${locale.value}/download`)
+}
+
+const openUrl = (url: string) => {
+  window.open(url)
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 export default {
   tips: {
-    install: '一键安装',
+    install: '下载安装',
     community: '社区动态',
     openSource: '开源社区',
     contribution: '贡献看板',

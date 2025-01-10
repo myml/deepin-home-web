@@ -45,10 +45,10 @@
       <div ref="dropdown" class="dropdown">
         <div class="dropdown-wrap">
           <div class="dropdown-menu">
-            <NuxtLink to="/">中文（简体）</NuxtLink>
+            <a href="/">中文（简体）</a>
           </div>
           <div class="dropdown-menu">
-            <NuxtLink to="/en">English</NuxtLink>
+            <a href="/en">English</a>
           </div>
         </div>
       </div>

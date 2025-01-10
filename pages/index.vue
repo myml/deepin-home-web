@@ -71,11 +71,16 @@ import { highlightDeepin, formatDate } from '~/utils/format'
 const { t, locale } = useI18n()
 const { home, getHome, news, getNews } = useHomeStore()
 
+const lang = ref(locale.value)
+
 const _result = await useAsyncData('home', async () => {
-  return Promise.all([getHome(locale.value), getNews(locale.value)])
+  return Promise.all([getHome(lang.value), getNews(lang.value)])
 })
 
 useHead({
+  htmlAttrs: {
+    lang: lang.value
+  },
   titleTemplate: home.config?.seo.title,
   meta: [
     { name: 'description', content: home.config?.seo.description },

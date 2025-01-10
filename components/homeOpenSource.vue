@@ -31,7 +31,14 @@
         <span v-html="t('tips.contribution')" />
       </div>
       <div
-        class="flex justify-center items-center gap-4 h-[108px] mt-[5px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer">
+        class="flex justify-center items-center gap-4 h-[108px] mt-[5px] bg-[--website-layer-card-background] rounded-[18px] border border-[--website-layer-card-border] border-solid cursor-pointer"
+        @click="
+          openUrl(
+            locale == 'zh'
+              ? 'https://www.deepin.org/index/zh/docs/wiki/06_%E5%85%B3%E4%BA%8EDeepin/Deepin%E7%A4%BE%E5%8C%BA/%E5%8F%82%E4%B8%8E%E6%88%91%E4%BB%AC'
+              : 'https://www.deepin.org/index/en/docs/wiki/en/About_Deepin/contribute_code'
+          )
+        ">
         <ClientOnly>
           <img
             class="w-[28px] h-[28px]"
@@ -86,7 +93,7 @@ import UsersProfiles from '@/assets/icons/users-profiles.svg'
 import UsersProfilesDark from '@/assets/icons/users-profiles-dark.svg'
 import { usePreferredDark } from '@vueuse/core'
 const { home } = useHomeStore()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const isDark = usePreferredDark()
 

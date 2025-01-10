@@ -36,7 +36,7 @@
               v-for="(link, linkIndex) in item.links"
               :key="linkIndex"
               class="flex items-center justify-center px-[22px] py-3 text-lg gap-1 text-black border border-[#e4e4e4] bg-white rounded-[39px]"
-              @click="openUrl(link.url)">
+              @click="openUrl(link.url, index)">
               <img src="~/assets/icons/deepin.svg" alt="" class="w-5 h-5" />
               <span>{{ link.title }}</span>
             </div>

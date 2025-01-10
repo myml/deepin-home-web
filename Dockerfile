@@ -15,4 +15,4 @@ FROM node:22
 COPY --from=builder /app/.output /app
 WORKDIR /app
 EXPOSE 3000
-CMD ["npm", "/app/server/index.mjs"]
+CMD ["node", "/app/server/index.mjs"]

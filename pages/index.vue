@@ -30,6 +30,8 @@
           <img
             :src="parseImgUrl(item.content.rendered)"
             class="w-[316px] h-full cursor-pointer"
+            alt="动态封面"
+            sizes="316px"
             @click="openUrl(item.link)" />
           <div class="w-full flex-col flex p-2.5 overflow-hidden font-semibold">
             <div

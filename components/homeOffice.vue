@@ -6,7 +6,11 @@
       :key="index"
       class="flex flex-col bg-[--website-layer-card-background] pb-2 rounded-xl border border-[--website-layer-card-border]">
       <div class="mx-4 my-6 text-left min-h-56">
-        <img class="w-[80px] h-[80px]" :src="card.image" :alt="card.title" />
+        <img
+          class="w-[80px] h-[80px]"
+          :src="card.image"
+          :alt="card.title"
+          loading="lazy" />
         <h2 class="text-lg font-semibold my-4">
           {{ card.title }}
         </h2>
@@ -18,10 +22,15 @@
       <div class="flex-1"></div>
 
       <div class="relative mx-1.5 rounded-lg overflow-hidden">
-        <img :src="card.cover" :alt="card.title" />
+        <img
+          :src="card.cover"
+          :alt="card.title"
+          loading="lazy"
+          class="w-full h-[140px]" />
         <img
           class="absolute right-0 bottom-0 top-12 w-[60px] h-[60px]"
           alt="play"
+          loading="lazy"
           src="~/assets/play.svg" />
         <div
           class="absolute inset-0 flex items-center justify-center opacity-0 cursor-pointer bg-[#008cba] hover:opacity-100 transition-opacity ease-in-out duration-500"

@@ -22,7 +22,8 @@
             <span v-else v-text="child.name" />
             <img
               v-if="child.children && child.children.length"
-              src="~/assets/icons/chevron-right.svg" />
+              src="~/assets/icons/chevron-right.svg"
+              alt="right" />
             <!-- 二级子菜单 -->
             <div v-if="child.children && child.children.length" class="submenu">
               <div class="submenu-wrap">
@@ -40,7 +41,7 @@
     </template>
     <template v-else>
       <ClientOnly>
-        <img :src="langIcon || ''" />
+        <img :src="langIcon" alt="lang" class="w-[19px] h-[19px]" />
       </ClientOnly>
       <div ref="dropdown" class="dropdown">
         <div class="dropdown-wrap">

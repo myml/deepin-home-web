@@ -7,7 +7,11 @@
           href="https://www.deepin.org"
           @mouseenter="logoHover = true"
           @mouseleave="logoHover = false"
-          ><ClientOnly><img class="h-[26.82px]" :src="logoSrc" /></ClientOnly
+          ><ClientOnly
+            ><img
+              class="w-[103.24px] h-[26.82px]"
+              :src="logoSrc"
+              alt="logo" /></ClientOnly
         ></a>
       </div>
       <navMenu />

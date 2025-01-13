@@ -84,14 +84,12 @@
           <p class="text-[--website-font-secondary] text-base mt-[7px] z-10">
             {{ reason.cards[1].content }}
           </p>
-          <div class="flex-1 relative">
-            <ClientOnly>
-              <img
-                :src="isDark ? ShieldDark : Shield"
-                alt="shield"
-                class="absolute top-[-25px] left-[42px] w-[194px] h-[257px] z-0" />
-            </ClientOnly>
-          </div>
+          <ClientOnly>
+            <img
+              :src="isDark ? ShieldDark : Shield"
+              alt="shield"
+              class="absolute bottom-0 w-[194px] h-[257px] left-[65px] z-0" />
+          </ClientOnly>
         </div>
         <!-- 社区强大区域 -->
         <div

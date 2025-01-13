@@ -21,7 +21,11 @@
           class="flex items-center pl-4 border border-[--website-app-border] border-l-0 border-b-0 h-10 whitespace-nowrap text-xs"
           :class="{ 'border-r-0': index % 3 === 2 }">
           <template v-if="!v.disabled">
-            <img class="w-6 h-6 mr-1" :src="v.image" :alt="v.title" />
+            <img
+              class="w-6 h-6 mr-1"
+              :src="v.image"
+              :alt="v.title"
+              loading="lazy" />
             <a v-if="v.link" :href="v.link" targe="_blank"> {{ v.title }} </a>
             <span v-if="!v.link"> {{ v.title }} </span>
           </template>

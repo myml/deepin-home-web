@@ -2,7 +2,14 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxt/eslint', 'nuxt-gtag'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxtjs/tailwindcss',
+    '@element-plus/nuxt',
+    '@nuxt/eslint',
+    'nuxt-gtag',
+  ],
   ssr: true,
   routeRules: {
     '/admin': { redirect: '/admin/seo' },
@@ -11,7 +18,8 @@ export default defineNuxtConfig({
   },
   gtag: {
     enabled: process.env.NODE_ENV === 'production',
-    id: 'G-JBPRYNBJZ7'
+    id: 'G-JBPRYNBJZ7',
+    loadingStrategy: 'async'
   },
   vite: {
     css: {
@@ -30,6 +38,7 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false
   },
   nitro: {
+    compressPublicAssets: true,
     devProxy: {
       "/api": {
         target: process.env.NUXT_API_BASE_URL,
@@ -37,6 +46,13 @@ export default defineNuxtConfig({
         prependPath: true
       }
     }
+  },
+  build: {
+    analyze: {
+      enabled: true,
+      open: true,
+      filename: "stats.html",
+    },
   },
   css: ['~/assets/scss/base.scss', '~/assets/scss/tailwindcss.scss', '~/assets/scss/variables.scss'],
 })

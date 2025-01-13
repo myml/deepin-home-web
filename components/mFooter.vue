@@ -34,7 +34,11 @@
                 </div>
               </template>
               <template #default>
-                <img :src="qr.img" alt="" class="w-full h-full" />
+                <img
+                  :src="qr.img"
+                  alt="connection"
+                  class="w-full h-full"
+                  loading="lazy" />
               </template>
             </el-popover>
           </template>
